@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tubes Project</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<form class="login" action="https://www.google.com">
+		<h2>Login</h2>
+		<input type="text" placeholder="Email" class="input">
+		<input type="password" placeholder="Password" class="input">
+		<button onclick="Check(event)" type="submit" class="btn">Login</button>
+	</form>
+	<script type="text/javascript">
+		function Check(e) {
+			// Menanyakan apakah yang dimasukan benar?
+			if (confirm("Apakah Email dan Password yang dimasukan benar ?")){
+				return true;			
+			}else{
+				e.preventDefault();
+			}
+		}
+	</script>
+</body>
+</html>
