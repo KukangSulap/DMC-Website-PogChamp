@@ -1,0 +1,27 @@
+html, body {
+  height: 100%;
+}
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn {
+	margin-top: 20px;
+}
+
+.login-form {
+	width: 400px;
+	height: min-content;
+	padding: 40px;
+	border-radius: 10px;
+	background-color: #ffffff;
+	align-items: center;
+	opacity: 90%;	
+}
+
+.note {
+	opacity: 50%;
+}
