@@ -96,3 +96,13 @@ h2{
     float: none;
   }
 }
+
+.card-img {
+	border-radius: 10px;
+	/*padding: 5px 5px 5px 5px;*/
+	/*margin: auto;*/
+}
+
+.card {
+	padding: 5px;
+}
