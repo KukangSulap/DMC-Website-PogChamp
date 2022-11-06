@@ -88,3 +88,15 @@ h2{
 .card {
 	padding: 5px;
 }
+
+#img {
+		background-image: url('../css/img1/plane1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+}
+
+#img2 {
+		background-image: url('../css/img1/plane2.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+}
+
+#img3 {
+		background-image: url('../css/img1/plane3.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+}
