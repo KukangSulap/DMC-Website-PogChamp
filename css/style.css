@@ -89,6 +89,10 @@ h2{
 	padding: 5px;
 }
 
+#h1add {
+	background-color: black;
+}
+
 #img {
 		background-image: url('../css/img1/plane1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
 }
