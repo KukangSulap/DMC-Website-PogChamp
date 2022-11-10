@@ -83,14 +83,30 @@ h2{
 	border-radius: 10px;
 	/*padding: 5px 5px 5px 5px;*/
 	/*margin: auto;*/
+	position: center;
+	object-fit: cover;
+
+}
+html {
+  scroll-behavior: smooth;
 }
 
 .card {
 	padding: 5px;
 }
 
+<<<<<<< HEAD
 #h1add {
 	background-color: black;
+=======
+
+#divmiomio {
+  height:500px;
+  background-color:white;
+  border: 1px solid #393c42;
+  border-radius:10px;
+  padding:20px;
+>>>>>>> fd8a536da0fb6ad10b27b11d5c7170d9c7455f2a
 }
 
 #img {

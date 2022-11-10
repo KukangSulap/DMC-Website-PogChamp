@@ -1,0 +1,25 @@
+[33mcommit 3cc980f41d14f119aa16d0742ac39ca92aada9bc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: 9William <gwilliam@student.telkomuniversity.ac.id>
+Date:   Thu Nov 10 21:30:43 2022 +0700
+
+    New login kind of
+
+[33mcommit fd8a536da0fb6ad10b27b11d5c7170d9c7455f2a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Howler Nofelle <hilmy@wahidin.net>
+Date:   Thu Nov 10 14:07:43 2022 +0700
+
+    pencarianPesawat fixed
+
+[33mcommit 8c71707b0790440480c3e79b4076f9ab77fc0945[m
+Author: Howler Nofelle <hilmy@wahidin.net>
+Date:   Wed Nov 9 21:00:58 2022 +0700
+
+    pencarianPesawat added
+    
+    sama card pesawat yg di home jg udh ke pencarianPesawat
+
+[33mcommit 0663d2b40ae6ef0cd6fe76bf01a3446dd158069a[m
+Author: Howler Nofelle <hilmy@wahidin.net>
+Date:   Tue Nov 8 14:32:07 2022 +0700
+
+    cards in homeActivity fixed
