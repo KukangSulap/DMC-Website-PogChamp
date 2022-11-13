@@ -1,0 +1,22 @@
+{
+	"detail" : [
+		{
+			"name" : "Itto Arataki",
+			"jns_travel" : "Pesawat",
+			"nama_travel" : "Liong Air",
+			"kota_asal" : "Jakarta",
+			"kota_tujuan" : "Bandung",
+			"tgl" : "1-1-1111",
+			"jml_pen" : "1"
+		},
+		{
+			"name" : "Sara Kujou",
+			"jns_travel" : "Pesawat",
+			"nama_travel" : "Liong Air",
+			"kota_asal" : "Bandung",
+			"kota_tujuan" : "Jakarta",
+			"tgl" : "1-1-1111",
+			"jml_pen" : "1"
+		}
+	]
+}
