@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Itto",
+      "last_name": "Arataki",
+      "address": "Yashiori Island",
+      "email": "itto@arataki-geng.com",
+      "country": "Inazuma"
+    },
+    {
+      "id": "2",
+      "name": "Sara",
+      "last_name": "Kujou",
+      "mobile_number": "-",
+      "address": "Inazuma City",
+      "email": "sara@kujou.com",
+      "country": "Inazuma"
+    }
+  ]
+}
