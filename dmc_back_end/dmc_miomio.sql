@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 24, 2022 at 04:07 AM
+-- Generation Time: Dec 31, 2022 at 05:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.28
 
@@ -43,7 +43,10 @@ CREATE TABLE `pesawat` (
 --
 
 INSERT INTO `pesawat` (`id_pesawat`, `nama_pesawat`, `harga_pesawat`, `jam_terbang`, `asal_pesawat`, `tujuan_pesawat`, `icon_pesawat`, `bg_pesawat`) VALUES
-(1, 'miong air', 'free', '20:20 - 20:30', 'asal-asal', 'akherat', NULL, NULL);
+(1, 'miong air', 'free', '20:20 - 20:30', 'asal-asal', 'akherat', 'lion.png', 'img2'),
+(2, 'minum air', 'free', '20:20 - 20:30', 'akherat', 'asal-asal', 'garuda.png', 'img'),
+(3, 'breathing air', 'free', '20:20 - 20:30', 'bandara', 'langit', 'cangcimen.png', 'img3'),
+(4, 'buang air', 'RP. 666.000', '20:22 - 20:32', 'happy new', 'year! yay', 'garuda.png', 'img2');
 
 --
 -- Indexes for dumped tables

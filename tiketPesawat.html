@@ -30,6 +30,9 @@
 
         <h1>Pilihan Pesawat:</h1>
 
+        <div id="bokunoyume"></div>
+
+<!-- 
         <div class="col-md-12 mt-3">
             <div class="card text-white" id="img">
                 <div class="card-body">
@@ -71,6 +74,7 @@
                 </div>
             </div>
         </div>
+ -->
 
     </div>
 
@@ -130,7 +134,36 @@
         <!-- Footer -->
       </section>
 
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+
     <script type="text/javascript">
+
+        const baseURL = "http://localhost:3000"
+
+        function get_required_plane() {
+            $.getJSON(baseURL + "/getAllPlanes", (data) => {
+                console.log(data)
+
+                display = "<div>"
+                data.data.forEach(function(value) {
+                    display = display + 
+                    "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
+                    value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/" 
+                    + value.icon_pesawat + 
+                    "' class='img-fluid' height='40px' width='40px'>" + 
+                    "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
+                    "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
+                    "<h5>" + value.harga_pesawat +  "</h5><a href='detailPemesanan.html' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+                })
+
+                display = display + "</div>"
+
+                document.getElementById("bokunoyume").innerHTML = display
+            })
+        }
+
+        window.onload = get_required_plane();
 
     </script>
 
