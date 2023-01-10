@@ -8,8 +8,7 @@ const cors = require('cors')
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use("/js", express.static("../assets/js"))
-app.use("/css", express.static("../assets/css"))
+app.use("/assets", express.static("../assets"))
 app.use("/js", express.static("../js"))
 app.use("/css", express.static("../css"))
 

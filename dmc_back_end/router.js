@@ -7,34 +7,13 @@ const message = "drugs is gucci"
 const pars = require("body-parser")
 const encoder = pars.urlencoded({ extended: true })
 
+//Membuka Setiap Page
 router.get('/', (req, res) => {
     res.sendFile("index.html", {root: "../"});
 })
 
-router.get('/getAllPlanes', (req, res) => {
-    // buatlah perintah untuk mengambil semua data pada table mahasiswa, jika berhasil mengirimkan status 200 dan gagal status 500
-    connection.query('SELECT * FROM pesawat', (error, rows) => {
-    
-        if (error) {
-            console.log(error);
-            res.status = 500;
-        } else {
-            console.log("miomio");
-        }
-    });
-})
-
-router.post('/',  encoder, (req, res) => {
-    const email = req.body.email;
-    const password = req.body.password;
-    connection.query('SELECT email, password FROM user WHERE email = ? AND password = ?', [email, password], (error, result, fields) => {
-        if (result.length > 0) {
-            res.redirect('/homeActivity')
-        } else {
-            res.redirect('/')
-        }
-        res.end();
-    })
+router.get('/homeAdmin', (req, res) => {
+    res.sendFile("homeAdmin.html", {root: "../"})
 })
 
 router.get('/homeActivity', (req, res) => {
@@ -49,11 +28,144 @@ router.get('/register', (req, res) => {
     res.sendFile('indexReg.html', {root: '../'})
 })
 
+router.get('/myAccount', (req, res) => {
+    res.sendFile('myAccount.html', {root: '../'})
+})
+
+router.get('/pencarianPesawat', (req, res) => {
+    res.sendFile('pencarianPesawat.html', {root: '../'})
+})
+
+router.get('/tiketPesawat', (req, res) => {
+    res.sendFile('tiketPesawat.html', {root: '../'})
+})
+
+router.get('/detailPemesanan', (req, res) => {
+    res.sendFile('detailPemesanan.html', {root: '../'})
+})
+// End
+
+// User
+
+router.get('/getUser/:id', (req, res) => {
+    const id = req.params.id
+    if (id == '`'){
+        connection.query('SELECT * FROM user' , (error, rows) => {
+            if (error) {
+                console.log(error);
+                res.status = 300;
+            } else {
+                console.log("get User Found");
+                res.status(200).send({data:rows})
+            }
+        });
+    }else {
+        connection.query('SELECT * FROM user where id = ?', id , (error, rows) => {
+            if (error) {
+                console.log(error);
+                res.status = 300;
+            } else {
+                console.log("get User Found");
+                res.status(200).send({data:rows})
+            }
+        });
+    }    
+})
+
+router.get('/getAllUser', (req, res) => {
+    connection.query('SELECT * FROM user', (error, rows) => {
+        if (error) {
+            console.log(error);
+            res.status = 300;
+        } else {
+            console.log("miomio");
+            res.status(200).send({data:rows})
+        }
+    });
+})
+
+router.post('/insertUser', encoder, (req, res) => {
+    const nama = req.body.nama
+    const email = req.body.email
+    const password = req.body.password
+    const role = req.body.role
+    connection.query('INSERT INTO user (id, email, password, nama, role) VALUES ((SELECT MAX(id) FROM user u) + 1, ?,?,?,?)', [email, password, nama, role], (error, result, fields) => {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("Success")
+        }
+        res.end()
+    })
+})
+
+router.post('/updateUser', encoder, (req, res) => {
+    const id = req.body.id
+    const nama = req.body.nama
+    const email = req.body.email
+    const password = req.body.password
+    const role = req.body.role
+    connection.query('UPDATE user SET email = ?, password = ?, nama = ?, role = ? WHERE id = ?', [email, password, nama, role, id], (error, result, fields) => {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("Success")
+        }
+        res.end()
+    })
+})
+
+router.post('/deleteUser', encoder, (req, res) => {
+    const id = req.body.id
+
+    connection.query('DELETE FROM user WHERE id = ?', [id], (error, result, fields) => {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("Success")
+        }
+        res.end()
+    })
+})
+
+// End User
+
+router.get('/getAllPlanes', (req, res) => {
+    connection.query('SELECT * FROM pesawat', (error, rows) => {
+        if (error) {
+            console.log(error);
+            res.status = 300;
+        } else {
+            console.log("get Pesawat Found");
+            res.status(200).send({data:rows})
+        }
+    });
+})
+
+
+
+router.post('/',  encoder, (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    connection.query('SELECT email, password, role FROM user WHERE email = ? AND password = ?', [email, password], (error, result, fields) => {
+        if (result.length > 0) {
+            if (result[0]['role'] == 'admin'){
+                res.redirect('/homeAdmin')
+            } else if (result[0]['role'] == 'user') {
+                res.redirect('/homeActivity')
+            }
+        } else {
+            res.redirect('/')
+        }
+        res.end();
+    })
+})
+
 router.post('/register',  encoder, (req, res) => {
     const nama = req.body.nama
     const email = req.body.email;
     const password = req.body.password;
-    connection.query('INSERT INTO user (nama, email, password) values (?, ?, ?)', [nama, email, password], (error, result, fields) => {
+    connection.query('INSERT INTO user (nama, email, password, role) values (?, ?, ?, "user")', [nama, email, password], (error, result, fields) => {
         if (error) {
             console.log(error)
         } else {
@@ -62,49 +174,5 @@ router.post('/register',  encoder, (req, res) => {
         res.end();
     })
 })
-
-// router.post('/insertMahasiswa', (req, res) => {
-//     const nama = req.body.nama
-//     const nim = req.body.nim
-//     const jurusan = req.body.jurusan
-
-//     // buatlah perintah untuk menambahkan nama, nim, dan jurusan pada table mahasiswa jika berhasil status 200 dan gagal status 400
-//     connection.query('INSERT INTO mahasiswa values (?,?,?,?)', [0, nama, nim, jurusan] , (error, rows) => {
-//         if (error) {
-//             console.log(error)
-//         } else {
-//             res.status(200).json({message:"", data:rows})
-//         }
-//     })
-// })
-
-// router.post('/updateMahasiswa/:id', (req, res) => {
-//     const id = req.params.id
-//     const nama = req.body.nama
-//     const nim = req.body.nim
-//     const jurusan = req.body.jurusan
-    
-//     // buatlah perintah untuk mengupdate nama, email, dan jurusan berdasarkan id pada table mahasiswa jika berhasil status 200 dan gagal 400
-//     connection.query('UPDATE mahasiswa SET nim = ?, nama = ?, jurusan = ? WHERE id = ?', [nim, nama, jurusan, id] , (error, rows) => {
-//         if (error) {
-//             console.log(error)
-//         } else {
-//             res.status(200).json({message:"", data:rows})
-//         }
-//     })
-// })
-
-// router.post('/deleteMahasiswa/:id', (req, res) => {
-//     const id = req.params.id
-    
-//     // buatlah perintah untuk menghapus data berdasarkan id pada table mahasiswa jika berhasil status 200 dan gagal status 500
-//     connection.query('DELETE FROM mahasiswa WHERE id = ?', id , (error, rows) => {
-//         if (error) {
-//             console.log(error)
-//         } else {
-//             res.status(200).json({message:"", data:rows})
-//         }
-//     })
-// })
 
 module.exports = router
