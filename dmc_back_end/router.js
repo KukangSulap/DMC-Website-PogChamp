@@ -156,6 +156,84 @@ router.get('/getOnePlanes', (req, res) => {
     });
 })
 
+router.get('/getPlane/:id_pesawat', (req, res) => {
+    const id_pesawat = req.params.id_pesawat
+    if (id_pesawat == '`'){
+        connection.query('SELECT * FROM pesawat' , (error, rows) => {
+            if (error) {
+                console.log(error);
+                res.status = 300;
+            } else {
+                console.log("get plane Found");
+                res.status(200).send({data:rows})
+            }
+        });
+    }else {
+        connection.query('SELECT * FROM pesawat where id_pesawat = ?', id_pesawat , (error, rows) => {
+            if (error) {
+                console.log(error);
+                res.status = 300;
+            } else {
+                console.log("get plane Found");
+                res.status(200).send({data:rows})
+            }
+        });
+    }    
+})
+
+
+router.post('/insertPlane', encoder, (req, res) => {
+    const nama_pesawat = req.body.w
+    const harga_pesawat = req.body.e
+    const jam_terbang = req.body.r
+    const asal_pesawat = req.body.t
+    const icon_pesawat = req.body.u
+    const bg_pesawat = req.body.i
+    connection.query('INSERT INTO pesawat (id_pesawat, nama_pesawat, harga_pesawat, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat) VALUES ((SELECT MAX(id_pesawat) FROM pesawat p) + 1, ?,?,?,?,?,?,?)', 
+        [nama_pesawat, harga_pesawat, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat], 
+        (error, result, fields) => {
+            if (error) {
+                console.log(error)
+            } else {
+                console.log("plane inserted")
+            }
+            res.end()
+        })
+})
+
+router.post('/updatePlane', encoder, (req, res) => {
+    const id_pesawat = req.body.q
+    const nama_pesawat = req.body.w
+    const harga_pesawat = req.body.e
+    const jam_terbang = req.body.r
+    const asal_pesawat = req.body.t
+    const tujuan_pesawat = req.body.y
+    const icon_pesawat = req.body.u
+    const bg_pesawat = req.body.i
+    connection.query('UPDATE pesawat SET nama_pesawat = ?, harga_pesawat = ?, jam_terbang = ?, asal_pesawat = ?, tujuan_pesawat = ?, icon_pesawat = ?, bg_pesawat = ? WHERE id_pesawat = ?', 
+        [nama_pesawat, harga_pesawat, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat, id_pesawat], 
+        (error, result, fields) => {
+            if (error) {
+                console.log(error)
+            } else {
+                console.log("plane updated")
+            }
+            res.end()
+        })
+})
+
+router.post('/deletePlane', encoder, (req, res) => {
+    const id_pesawat = req.body.id_pesawat
+
+    connection.query('DELETE FROM pesawat WHERE id_pesawat = ?', [id_pesawat], (error, result, fields) => {
+        if (error) {
+            console.log(error)
+        } else {
+            console.log("plane deleted")
+        }
+        res.end()
+    })
+})
 
 router.post('/',  encoder, (req, res) => {
     const email = req.body.email;

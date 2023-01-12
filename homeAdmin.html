@@ -30,7 +30,7 @@
       </div>
 
       <!-- User -->
-      <div id="but" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; visibility: hidden;">
+      <div id="but" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; display: none;">
         <button id="but1" class="btn btn-dark" onclick="showSearch()">Search</button>
         <button id="but2" class="btn btn-dark" onclick="showInsert()">Insert</button>
         <button id="but3" class="btn btn-dark" onclick="showUpdate()">Update</button>
@@ -101,6 +101,102 @@
         </div>
      </div>
      <!-- End for User -->
+
+     <!-- Pesawat -->
+     <div id="planeManagement" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; display: none;">
+        <button id="btnSearchPlane" class="btn btn-dark" onclick="showSearchPlane()">Search Plane</button>
+        <button id="btnInsertPlane" class="btn btn-dark" onclick="showInsertPlane()">Insert Plane</button>
+        <button id="btnUpdatePlane" class="btn btn-dark" onclick="showUpdatePlane()">Update Plane</button>
+        <button id="btnDeletePlane" class="btn btn-dark" onclick="showDeletePlane()">Delete Plane</button><br>
+        <div id="findPlane" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID Pesawat</label>
+                <input type="text" class="form-control" id="findPlaneID">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="findPlane()">Find</button>
+        </div>
+
+        <div id="insertPlane" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>Nama Pesawat</label>
+                <input type="text" class="form-control" id="nama_pesawat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga Pesawat</label>
+                <input type="text" class="form-control" id="harga_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Jam Terbang</label>
+                <input type="text" class="form-control" id="jam_terbang_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Asal Pesawat</label>
+              <input type="text" class="form-control" id="asal_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Tujuan Pesawat</label>
+              <input type="text" class="form-control" id="tujuan_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Icon Pesawat</label>
+              <input type="text" class="form-control" id="icon_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Background Pesawat</label>
+              <input type="text" class="form-control" id="bg_pesawat_insert">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="insertPlane()">Insert</button>
+        </div>
+
+        <div id="updatePlane" style="display: none">
+            <br>
+            <h3>Update Pesawat</h3>
+            <div class="form-group" style="width: 500px">
+                <label>ID Pesawad</label>
+                <input type="text" class="form-control" id="id_pesawat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Nama Pesawat</label>
+                <input type="text" class="form-control" id="nama_pesawat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga Pesawat</label>
+                <input type="text" class="form-control" id="harga_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Jam Terbang</label>
+                <input type="text" class="form-control" id="jam_terbang_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Asal Pesawat</label>
+              <input type="text" class="form-control" id="asal_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Tujuan Pesawat</label>
+              <input type="text" class="form-control" id="tujuan_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Icon Pesawat</label>
+              <input type="text" class="form-control" id="icon_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+              <label>Background Pesawat</label>
+              <input type="text" class="form-control" id="bg_pesawat_update">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="updatePlane()">Update</button>
+        </div>
+
+        <div id="deletePlane" style="display: none">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID Pesawat</label>
+                <input type="text" class="form-control" id="id_plane_delete">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="deletePlane()">Delete</button>
+        </div>
+     </div>
 
       <section class="mt-auto">
          <!-- Footer -->

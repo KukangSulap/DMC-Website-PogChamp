@@ -39,3 +39,38 @@ function showDelete() {
     document.getElementById("delete").style.display = "initial"
 }
 // End User
+
+function clearPlane() {
+    document.getElementById("findPlane").style.display = "none"
+    document.getElementById("insertPlane").style.display = "none"
+    document.getElementById("updatePlane").style.display = "none"
+    document.getElementById("deletePlane").style.display = "none"
+}
+
+function showSearchPlane() {
+    document.getElementById("findPlane").style.display = "initial"
+    document.getElementById("insertPlane").style.display = "none"
+    document.getElementById("updatePlane").style.display = "none"
+    document.getElementById("deletePlane").style.display = "none"
+}
+
+function showInsertPlane() {
+    document.getElementById("findPlane").style.display = "none"
+    document.getElementById("insertPlane").style.display = "initial"
+    document.getElementById("updatePlane").style.display = "none"
+    document.getElementById("deletePlane").style.display = "none"
+}
+
+function showUpdatePlane() {
+    document.getElementById("findPlane").style.display = "none"
+    document.getElementById("insertPlane").style.display = "none"
+    document.getElementById("updatePlane").style.display = "initial"
+    document.getElementById("deletePlane").style.display = "none"
+}
+
+function showDeletePlane() {
+    document.getElementById("findPlane").style.display = "none"
+    document.getElementById("insertPlane").style.display = "none"
+    document.getElementById("updatePlane").style.display = "none"
+    document.getElementById("deletePlane").style.display = "initial"
+}

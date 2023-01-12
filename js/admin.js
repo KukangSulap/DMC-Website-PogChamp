@@ -17,7 +17,8 @@ function get_required_user() {
         display = display + "</tbody></table></div>"
         document.getElementById("list").innerHTML = display
     })
-    document.getElementById("but").style.visibility = 'visible'
+    document.getElementById("but").style.display = 'inline'
+    document.getElementById("planeManagement").style.display = 'none'
 }
 
 function findUser() {
@@ -105,7 +106,7 @@ function deleteUser() {
 // Pesawat
 
 function get_required_plane() {
-    clear()
+    clearPlane()
     $.getJSON(baseURL + "/getAllPlanes", (data) => {
         display = "<table class='mt-4 table'><thead><tr><th>ID Pesawat</th><th>Nama Pesawat</th><th>Harga</th><th>Jam Terbang</th></tr></thead><tbody>"
         data.data.forEach(function(value) {
@@ -118,4 +119,79 @@ function get_required_plane() {
         display = display + "</tbody></table></div>"
         document.getElementById("list").innerHTML = display
     })
+    document.getElementById("but").style.display = 'none'
+    document.getElementById("planeManagement").style.display = 'inline'
+}
+
+function findPlane() {
+    var id_pesawat = document.getElementById("findPlane").value
+
+    $.getJSON(baseURL + "/getPlane/" + id_pesawat, (data) => {
+        display = "<table class='mt-4 table'><thead><tr><th>ID Pesawat</th><th>Nama Pesawat</th><th>Harga</th><th>Jam Terbang</th></tr></thead><tbody>"
+        data.data.forEach(function(value) {
+            display = display + "<tr><td>" + value.id_pesawat + "</td>" +
+                "<td>" + value.nama_pesawat + "</td>" +
+                "<td>" + value.harga_pesawat + "</td>" +
+                "<td>" + value.jam_terbang + "</td></tr>"
+        })
+
+        display = display + "</tbody></table></div>"
+        document.getElementById("list").innerHTML = display
+    })
+    document.getElementById("findPlaneID").value = ""
+}
+
+function insertPlane() {
+    const data = {}
+    data.w = document.getElementById("nama_pesawat_insert").value
+    data.e = document.getElementById("harga_insert").value
+    data.r = document.getElementById("jam_terbang_insert").value
+    data.t = document.getElementById("asal_insert").value
+    data.y = document.getElementById("tujuan_insert").value
+    data.u = document.getElementById("icon_insert").value
+    data.i = document.getElementById("bg_pesawat_insert").value
+
+    $.ajax({
+        type: "POST",
+        url: baseURL + "/insertPlane",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json"
+    })
+    get_required_plane()
+} 
+
+function updatePlane() {
+    const data = {}
+    data.q = document.getElementById("id_pesawat_update").value
+    data.w = document.getElementById("nama_pesawat_update").value
+    data.e = document.getElementById("harga_update").value
+    data.r = document.getElementById("jam_terbang_update").value
+    data.t = document.getElementById("asal_update").value
+    data.y = document.getElementById("tujuan_update").value
+    data.u = document.getElementById("icon_update").value
+    data.i = document.getElementById("bg_pesawat_update").value
+
+    $.ajax({
+        type: "POST",
+        url: baseURL + "/updatePlane",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json"
+    })
+    get_required_plane()
+}
+
+
+function deletePlane() {
+    const data = {}
+    data.id_pesawat = document.getElementById("id_plane_delete").value
+    $.ajax({
+        type: "POST",
+        url: baseURL + "/deletePlane",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json"
+    })
+    get_required_plane()
 }
