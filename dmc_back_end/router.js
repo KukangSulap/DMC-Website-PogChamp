@@ -167,9 +167,9 @@ router.get('/getPlane/:id_pesawat', (req, res) => {
                 console.log("get plane Found");
                 res.status(200).send({data:rows})
             }
-        });
+        })
     }else {
-        connection.query('SELECT * FROM pesawat where id_pesawat = ?', id_pesawat , (error, rows) => {
+        connection.query('SELECT * FROM pesawat WHERE id_pesawat = ?', id_pesawat , (error, rows) => {
             if (error) {
                 console.log(error);
                 res.status = 300;

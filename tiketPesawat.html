@@ -123,11 +123,32 @@
                 })
 
                 display = display + "</div>"
-
                 document.getElementById("bokunoyume").innerHTML = display
             })
         }
 
+        function findPlane(){
+          var id_pesawat = document.getElementById("findPlaneID").value
+
+          $.getJSON(baseURL + "/getPlane/" + id_pesawat, (data) => {
+            display = "<div>"
+                data.data.forEach(function(value) {
+                    display = display + 
+                    "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
+                    value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/" 
+                    + value.icon_pesawat + 
+                    "' class='img-fluid' height='40px' width='40px'>" + 
+                    "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
+                    "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
+                    "<h5>" + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+                })
+
+                display = display + "</div>"
+                document.getElementById("bokunoyume").innerHTML = display
+                document.getElementById("findPlaneID").value = ""
+          })
+          
+        }
         window.onload = get_required_plane();
 
     </script>
