@@ -1,6 +1,8 @@
 const { response } = require('express')
 const express = require('express')
 const connection = require('./database')
+const LocalStorage = require('node-localstorage').LocalStorage
+localStorage = new LocalStorage('./scratch');
 const router = new express.Router()
 const message = "drugs is gucci"
 
@@ -9,7 +11,7 @@ const encoder = pars.urlencoded({ extended: true })
 
 //Membuka Setiap Page
 router.get('/', (req, res) => {
-    res.sendFile("index.html", {root: "../"});
+    res.sendFile("index.html", {root: "../"});  
 })
 
 router.get('/homeAdmin', (req, res) => {
@@ -142,12 +144,23 @@ router.get('/getAllPlanes', (req, res) => {
     });
 })
 
+router.get('/getOnePlanes', (req, res) => {
+    connection.query('SELECT * FROM pesawat where id_pesawat = 1', (error, rows) => {
+        if (error) {
+            console.log(error);
+            res.status = 300;
+        } else {
+            console.log("get Pesawat Found");
+            res.status(200).send({data:rows})
+        }
+    });
+})
 
 
 router.post('/',  encoder, (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    connection.query('SELECT email, password, role FROM user WHERE email = ? AND password = ?', [email, password], (error, result, fields) => {
+    connection.query('SELECT nama, email, password, role FROM user WHERE email = ? AND password = ?', [email, password], (error, result, fields) => {
         if (result.length > 0) {
             if (result[0]['role'] == 'admin'){
                 res.redirect('/homeAdmin')

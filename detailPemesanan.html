@@ -11,7 +11,7 @@
     <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
         <div class="container">
             <div class="row">
-                <a class="navbar-brand" href="homeActivity.html">
+                <a class="navbar-brand" href="homeActivity">
                     <img class="img-fluid" src="css/bakudan.png" width="40" height="40">
                 </a>
 
@@ -19,7 +19,7 @@
             </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-white" href="tiketPesawat.html">Back</a>
+                    <a class="nav-link text-white" href="tiketPesawat">Back</a>
                 </li>
             </ul>
         </div>
@@ -39,17 +39,17 @@
                   <h6 class="my-0">Product name</h6>
                   <small class="text-muted">Brief description</small>
                 </div>
-                <span class="text-muted">Rp. 909.090</span>
+                <span id="total1" class="text-muted"></span>
               </li>
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                   <h6 class="my-0">Service Tax</h6>
                 </div>
-                <span class="text-muted">Rp. 9.090</span>
+                <span id="tax" class="text-muted"></span>
               </li>
               <li class="list-group-item d-flex justify-content-between">
                 <span>Total</span>
-                <strong>Rp. 918.180</strong>
+                <strong id="totalHasil"></strong>
               </li>
             </ul>
           </div>
@@ -59,10 +59,6 @@
                 <div class="col-sm-12">
                   <label for="firstName" class="form-label my-1">Nama Lengkap</label>
                   <input type="text" class="form-control" id="name" disabled>
-                </div>
-                <div class="col-sm-12">
-                  <label for="jns_travel" class="form-label my-1">Jenis Travel</label>
-                  <input type="text" class="form-control" id="jns_travel" disabled>
                 </div>
                 <div class="col-sm-12">
                   <label for="nama_travel" class="form-label my-1">Nama Travel</label>
@@ -79,10 +75,6 @@
                 <div class="col-sm-12">
                   <label for="tgl" class="form-label my-1">Tanggal Berangkat</label>
                   <input type="text" class="form-control" id="tgl" disabled>
-                </div>
-                <div class="col-sm-12">
-                  <label for="jml_pen" class="form-label my-1">Jumlah Penumpang</label>
-                  <input type="text" class="form-control" id="jml_pen" disabled>
                 </div>
               </div>
               <hr class="my-4">
@@ -149,5 +141,9 @@
 
     <script type="text/javascript" src="js/details.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+      let nama = localStorage.getItem('email')
+      document.getElementById("name").value = nama
+    </script>
 </body>
 </html>
