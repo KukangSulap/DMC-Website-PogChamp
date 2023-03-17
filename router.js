@@ -11,15 +11,15 @@ const encoder = pars.urlencoded({ extended: true })
 
 //Membuka Setiap Page
 router.get('/', (req, res) => {
-    res.sendFile("index.html", {root: "../"});  
+    res.sendFile("index.html", {root: "./"});  
 })
 
 router.get('/homeAdmin', (req, res) => {
-    res.sendFile("homeAdmin.html", {root: "../"})
+    res.sendFile("homeAdmin.html", {root: "./"})
 })
 
 router.get('/homeActivity', (req, res) => {
-    res.sendFile("homeActivity.html", {root: "../"})
+    res.sendFile("homeActivity.html", {root: "./"})
 })
 
 router.get('/index.html', (req, res) => {
@@ -27,23 +27,23 @@ router.get('/index.html', (req, res) => {
 })
 
 router.get('/register', (req, res) => {
-    res.sendFile('indexReg.html', {root: '../'})
+    res.sendFile('indexReg.html', {root: './'})
 })
 
 router.get('/myAccount', (req, res) => {
-    res.sendFile('myAccount.html', {root: '../'})
+    res.sendFile('myAccount.html', {root: './'})
 })
 
 router.get('/pencarianPesawat', (req, res) => {
-    res.sendFile('pencarianPesawat.html', {root: '../'})
+    res.sendFile('pencarianPesawat.html', {root: './'})
 })
 
 router.get('/tiketPesawat', (req, res) => {
-    res.sendFile('tiketPesawat.html', {root: '../'})
+    res.sendFile('tiketPesawat.html', {root: './'})
 })
 
 router.get('/detailPemesanan', (req, res) => {
-    res.sendFile('detailPemesanan.html', {root: '../'})
+    res.sendFile('detailPemesanan.html', {root: './'})
 })
 // End
 
@@ -141,7 +141,7 @@ router.get('/getAllPlanes', (req, res) => {
             console.log("get Pesawat Found");
             res.status(200).send({data:rows})
         }
-    });
+    })
 })
 
 router.get('/getOnePlanes', (req, res) => {
@@ -169,7 +169,7 @@ router.get('/getPlane/:id_pesawat', (req, res) => {
             }
         })
     }else {
-        connection.query('SELECT * FROM pesawat WHERE id_pesawat = ?', id_pesawat , (error, rows) => {
+        connection.query('SELECT * FROM `pesawat` WHERE nama_pesawat LIKE "%?%"', id_pesawat , (error, rows) => {
             if (error) {
                 console.log(error);
                 res.status = 300;

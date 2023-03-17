@@ -32,7 +32,7 @@
 
         <div id="findPlane" class="container p-12">
             <div class="col-md-10" >
-                <label>ID Pesawat</label>
+                <label>Nama Pesawat</label>
                 <input type="text" class="form-control" id="findPlaneID">
             </div>
             <div class="col-md-2" >
@@ -119,7 +119,7 @@
                     "' class='img-fluid' height='40px' width='40px'>" + 
                     "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
                     "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
-                    "<h5>" + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+                    "<h5>" + "Rp. " + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
                 })
 
                 display = display + "</div>"
