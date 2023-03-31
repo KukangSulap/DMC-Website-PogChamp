@@ -260,7 +260,7 @@ router.post('/register',  encoder, (req, res) => {
         if (error) {
             console.log(error)
         } else {
-            res.redirect('/homeActivity')
+            res.redirect('/')
         }
         res.end();
     })

@@ -49,11 +49,17 @@
          const signupBtn = document.querySelector("label.signup");
          const signupLink = document.querySelector("form .signup-link a");
 
+         function clear() {
+            localStorage.clear()
+         }
+
          function save() {
             localStorage.clear()
             let Email = document.getElementById("email").value
             localStorage.setItem('email', Email)
          }
+
+         window.onload = clear;
       </script>
 
    </body>
