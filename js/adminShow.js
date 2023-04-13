@@ -1,7 +1,7 @@
 function none() {
     display = ""
     document.getElementById("list").innerHTML = display
-    document.getElementById("but").style.visibility = 'hidden'
+    document.getElementById("but").style.display = 'none'
 }
 // User
 function clear() {
@@ -40,6 +40,8 @@ function showDelete() {
 }
 // End User
 
+//Plane
+
 function clearPlane() {
     document.getElementById("findPlane").style.display = "none"
     document.getElementById("insertPlane").style.display = "none"
@@ -74,3 +76,79 @@ function showDeletePlane() {
     document.getElementById("updatePlane").style.display = "none"
     document.getElementById("deletePlane").style.display = "initial"
 }
+
+//End Plane
+
+// Train
+function clearTrain() {
+    document.getElementById("findTrain").style.display = "none"
+    document.getElementById("insertTrain").style.display = "none"
+    document.getElementById("updateTrain").style.display = "none"
+    document.getElementById("deleteTrain").style.display = "none"
+}
+
+function showSearchTrain() {
+    document.getElementById("findTrain").style.display = "initial"
+    document.getElementById("insertTrain").style.display = "none"
+    document.getElementById("updateTrain").style.display = "none"
+    document.getElementById("deleteTrain").style.display = "none"
+}
+
+function showInsertTrain() {
+    document.getElementById("findTrain").style.display = "none"
+    document.getElementById("insertTrain").style.display = "initial"
+    document.getElementById("updateTrain").style.display = "none"
+    document.getElementById("deleteTrain").style.display = "none"
+}
+
+function showUpdateTrain() {
+    document.getElementById("findTrain").style.display = "none"
+    document.getElementById("insertTrain").style.display = "none"
+    document.getElementById("updateTrain").style.display = "initial"
+    document.getElementById("deleteTrain").style.display = "none"
+}
+
+function showDeleteTrain() {
+    document.getElementById("findTrain").style.display = "none"
+    document.getElementById("insertTrain").style.display = "none"
+    document.getElementById("updateTrain").style.display = "none"
+    document.getElementById("deleteTrain").style.display = "initial"
+}
+//End Train
+
+//Travel
+function clearTravel() {
+    document.getElementById("findTravel").style.display = "none"
+    document.getElementById("insertTravel").style.display = "none"
+    document.getElementById("updateTravel").style.display = "none"
+    document.getElementById("deleteTravel").style.display = "none"
+}
+
+function showSearchTravel() {
+    document.getElementById("findTravel").style.display = "initial"
+    document.getElementById("insertTravel").style.display = "none"
+    document.getElementById("updateTravel").style.display = "none"
+    document.getElementById("deleteTravel").style.display = "none"
+}
+
+function showInsertTravel() {
+    document.getElementById("findTravel").style.display = "none"
+    document.getElementById("insertTravel").style.display = "initial"
+    document.getElementById("updateTravel").style.display = "none"
+    document.getElementById("deleteTravel").style.display = "none"
+}
+
+function showUpdateTravel() {
+    document.getElementById("findTravel").style.display = "none"
+    document.getElementById("insertTravel").style.display = "none"
+    document.getElementById("updateTravel").style.display = "initial"
+    document.getElementById("deleteTravel").style.display = "none"
+}
+
+function showDeleteTravel() {
+    document.getElementById("findTravel").style.display = "none"
+    document.getElementById("insertTravel").style.display = "none"
+    document.getElementById("updateTravel").style.display = "none"
+    document.getElementById("deleteTravel").style.display = "initial"
+}
+//End Travel

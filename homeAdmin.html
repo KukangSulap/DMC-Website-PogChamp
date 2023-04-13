@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>DMC WEB | Home</title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-   </head>
-   <body class="d-flex flex-column min-vh-100" style="background: white;">
-      <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
-         <div class="container">
+
+<head>
+    <title>DMC WEB | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100" style="background: white;">
+    <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
             <div class="row">
-               <a class="navbar-brand" href="#">
-               <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
-               </a>
-               <h1 class="text-white" style="margin: auto;">Form Admin</h1>
+                <a class="navbar-brand" href="#">
+                    <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
+                </a>
+                <h1 class="text-white" style="margin: auto;">Form Admin</h1>
             </div>
             <ul class="navbar-nav ml-auto">
-               <li class="nav-item">
-                  <a class="nav-link text-white" href="/">Logout</a>
-               </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/">Logout</a>
+                </li>
             </ul>
-         </div>
-      </div>
-      <div class="container shadow-sm rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%;">
+        </div>
+    </div>
+    <div class="container shadow-sm rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%;">
         <button class="btn btn-secondary" onclick="none()">Close</button>
         <button class="btn btn-secondary" onclick="get_required_user()">User</button>
         <button class="btn btn-secondary" onclick="get_required_plane()">Pesawat</button>
-         <div id="list"></div>
-      </div>
+        <button class="btn btn-secondary" onclick="get_required_train()">Kereta</button>
+        <button class="btn btn-secondary" onclick="get_required_travel()">Travel</button>
+        <div id="list"></div>
+    </div>
 
-      <!-- User -->
-      <div id="but" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; display: none;">
+    <!-- User -->
+    <div id="but" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; display: none;">
         <button id="but1" class="btn btn-dark" onclick="showSearch()">Search</button>
         <button id="but2" class="btn btn-dark" onclick="showInsert()">Insert</button>
         <button id="but3" class="btn btn-dark" onclick="showUpdate()">Update</button>
@@ -59,8 +63,8 @@
                 <input type="text" class="form-control" id="password_insert">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Role</label>
-              <input type="text" class="form-control" id="role_insert">
+                <label>Role</label>
+                <input type="text" class="form-control" id="role_insert">
             </div>
             <button type="submit" class="btn btn-primary" onclick="insertUser()">Insert</button>
         </div>
@@ -85,8 +89,8 @@
                 <input type="text" class="form-control" id="password_update">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Role</label>
-              <input type="text" class="form-control" id="role_update">
+                <label>Role</label>
+                <input type="text" class="form-control" id="role_update">
             </div>
             <button type="submit" class="btn btn-primary" onclick="updateUser()">Update</button>
         </div>
@@ -99,11 +103,12 @@
             </div>
             <button type="submit" class="btn btn-primary" onclick="deleteUser()">Delete</button>
         </div>
-     </div>
-     <!-- End for User -->
+    </div>
+    <!-- End for User -->
 
-     <!-- Pesawat -->
-     <div id="planeManagement" class="container shadow rounded mt-5 mb-5" style="margin-top:5%; margin-bottom: 5%; display: none;">
+    <!-- Pesawat -->
+    <div id="planeManagement" class="container shadow rounded mt-5 mb-5"
+        style="margin-top:5%; margin-bottom: 5%; display: none;">
         <button id="btnSearchPlane" class="btn btn-dark" onclick="showSearchPlane()">Search Plane</button>
         <button id="btnInsertPlane" class="btn btn-dark" onclick="showInsertPlane()">Insert Plane</button>
         <button id="btnUpdatePlane" class="btn btn-dark" onclick="showUpdatePlane()">Update Plane</button>
@@ -124,37 +129,48 @@
                 <input type="text" class="form-control" id="nama_pesawat_insert">
             </div>
             <div class="form-group" style="width: 500px">
-                <label>Harga Pesawat</label>
+                <label>Harga</label>
                 <input type="text" class="form-control" id="harga_insert">
             </div>
             <div class="form-group" style="width: 500px">
-                <label>Jam Terbang</label>
+                <label>Boarding Time</label>
                 <input type="text" class="form-control" id="jam_terbang_insert">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Asal Pesawat</label>
-              <input type="text" class="form-control" id="asal_insert">
+                <label>Asal</label>
+                <input type="text" class="form-control" id="asal_insert">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Tujuan Pesawat</label>
-              <input type="text" class="form-control" id="tujuan_insert">
+                <label>Tiba</label>
+                <input type="text" class="form-control" id="tujuan_insert">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Icon Pesawat</label>
-              <input type="text" class="form-control" id="icon_insert">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="duduk_insert">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Background Pesawat</label>
-              <input type="text" class="form-control" id="bg_pesawat_insert">
+                <label>Gate</label>
+                <input type="text" class="form-control" id="gate_insert">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="insertPlane()">Insert</button>
+            <div class="form-group" style="width: 500px">
+                <label>Icon Pesawat</label>
+                <input type="text" class="form-control" id="icon_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background Pesawat</label>
+                <input type="text" class="form-control" id="bg_pesawat_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="insertPlane()" style="margin-top: 3%;">Insert</button>
         </div>
 
         <div id="updatePlane" style="display: none">
             <br>
-            <h3>Update Pesawat</h3>
             <div class="form-group" style="width: 500px">
-                <label>ID Pesawad</label>
+                <label>ID Pesawat</label>
                 <input type="text" class="form-control" id="id_pesawat_update">
             </div>
             <div class="form-group" style="width: 500px">
@@ -162,30 +178,40 @@
                 <input type="text" class="form-control" id="nama_pesawat_update">
             </div>
             <div class="form-group" style="width: 500px">
-                <label>Harga Pesawat</label>
+                <label>Harga</label>
                 <input type="text" class="form-control" id="harga_update">
             </div>
             <div class="form-group" style="width: 500px">
-                <label>Jam Terbang</label>
+                <label>Boarding Time</label>
                 <input type="text" class="form-control" id="jam_terbang_update">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Asal Pesawat</label>
-              <input type="text" class="form-control" id="asal_update">
+                <label>Asal</label>
+                <input type="text" class="form-control" id="asal_update">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Tujuan Pesawat</label>
-              <input type="text" class="form-control" id="tujuan_update">
+                <label>Tiba</label>
+                <input type="text" class="form-control" id="tujuan_update">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Icon Pesawat</label>
-              <input type="text" class="form-control" id="icon_update">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="duduk_update">
             </div>
             <div class="form-group" style="width: 500px">
-              <label>Background Pesawat</label>
-              <input type="text" class="form-control" id="bg_pesawat_update">
+                <label>Gate</label>
+                <input type="text" class="form-control" id="gate_update">
             </div>
-            <button type="submit" class="btn btn-primary" onclick="updatePlane()">Update</button>
+            <div class="form-group" style="width: 500px">
+                <label>Icon Pesawat</label>
+                <input type="text" class="form-control" id="icon_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background Pesawat</label>
+                <input type="text" class="form-control" id="bg_pesawat_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="updatePlane()" style="margin-top: 3%;">Update</button>
         </div>
 
         <div id="deletePlane" style="display: none">
@@ -196,61 +222,268 @@
             </div>
             <button type="submit" class="btn btn-primary" onclick="deletePlane()">Delete</button>
         </div>
-     </div>
+    </div>
 
-      <section class="mt-auto">
-         <!-- Footer -->
-         <footer class="bg-secondary text-white">
+    <!-- Train -->
+    <div id="trainManagement" class="container shadow rounded mt-5 mb-5"
+        style="margin-top:5%; margin-bottom: 5%; display: none;">
+        <button id="btnSearchTrain" class="btn btn-dark" onclick="showSearchTrain()">Search Train</button>
+        <button id="btnInsertTrain" class="btn btn-dark" onclick="showInsertTrain()">Insert Train</button>
+        <button id="btnUpdateTrain" class="btn btn-dark" onclick="showUpdateTrain()">Update Train</button>
+        <button id="btnDeleteTrain" class="btn btn-dark" onclick="showDeleteTrain()">Delete Train</button><br>
+        <div id="findTrain" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID kereta</label>
+                <input type="text" class="form-control" id="findTrainID">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="findTrain()">Find</button>
+        </div>
+
+        <div id="insertTrain" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>Nama kereta</label>
+                <input type="text" class="form-control" id="nama_kereta_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga</label>
+                <input type="text" class="form-control" id="harga_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Berangkat</label>
+                <input type="text" class="form-control" id="jam_berangkat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Tiba</label>
+                <input type="text" class="form-control" id="asal_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="tujuan_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Icon Kereta</label>
+                <input type="text" class="form-control" id="icon_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background Kereta</label>
+                <input type="text" class="form-control" id="bg_kereta_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="insertTrain()" style="margin-top: 3%;">Insert</button>
+        </div>
+
+        <div id="updateTrain" style="display: none">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID Kereta</label>
+                <input type="text" class="form-control" id="id_kereta_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Nama Kereta</label>
+                <input type="text" class="form-control" id="nama_kereta_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga</label>
+                <input type="text" class="form-control" id="harga_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Berangkat</label>
+                <input type="text" class="form-control" id="jam_berangkat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Tiba</label>
+                <input type="text" class="form-control" id="asal_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="tujuan_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Icon Kereta</label>
+                <input type="text" class="form-control" id="icon_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background Kereta</label>
+                <input type="text" class="form-control" id="bg_kereta_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="updateTrain()" style="margin-top: 3%;">Update</button>
+        </div>
+
+        <div id="deleteTrain" style="display: none">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID Kereta</label>
+                <input type="text" class="form-control" id="id_train_delete">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="deleteTrain()">Delete</button>
+        </div>
+    </div>
+    <!-- End Train -->
+
+    <!-- Travel -->
+    <div id="travelManagement" class="container shadow rounded mt-5 mb-5"
+        style="margin-top:5%; margin-bottom: 5%; display: none;">
+        <button id="btnSearchTravel" class="btn btn-dark" onclick="showSearchTravel()">Search Travel</button>
+        <button id="btnInsertTravel" class="btn btn-dark" onclick="showInsertTravel()">Insert Travel</button>
+        <button id="btnUpdateTravel" class="btn btn-dark" onclick="showUpdateTravel()">Update Travel</button>
+        <button id="btnDeleteTravel" class="btn btn-dark" onclick="showDeleteTravel()">Delete Travel</button><br>
+        <div id="findTravel" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID travel</label>
+                <input type="text" class="form-control" id="findTravelID">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="findTravel()">Find</button>
+        </div>
+
+        <div id="insertTravel" style="display: none;">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>Nama travel</label>
+                <input type="text" class="form-control" id="nama_travel_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga</label>
+                <input type="text" class="form-control" id="harga_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="jam_berangkat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Berangkat</label>
+                <input type="text" class="form-control" id="asal_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Tiba</label>
+                <input type="text" class="form-control" id="tujuan_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Icon travel</label>
+                <input type="text" class="form-control" id="icon_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background travel</label>
+                <input type="text" class="form-control" id="bg_travel_insert" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="insertTravel()" style="margin-top: 3%;">Insert</button>
+        </div>
+
+        <div id="updateTravel" style="display: none">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID travel</label>
+                <input type="text" class="form-control" id="id_travel_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Nama travel</label>
+                <input type="text" class="form-control" id="nama_travel_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Harga</label>
+                <input type="text" class="form-control" id="harga_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>No Tempat Duduk</label>
+                <input type="text" class="form-control" id="jam_berangkat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Berangkat</label>
+                <input type="text" class="form-control" id="asal_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Waktu Tiba</label>
+                <input type="text" class="form-control" id="tujuan_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Icon travel</label>
+                <input type="text" class="form-control" id="icon_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Background travel</label>
+                <input type="text" class="form-control" id="bg_travel_update" readonly>
+                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
+
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="updateTravel()" style="margin-top: 3%;">Update</button>
+        </div>
+
+        <div id="deleteTravel" style="display: none">
+            <br>
+            <div class="form-group" style="width: 500px">
+                <label>ID travel</label>
+                <input type="text" class="form-control" id="id_Travel_delete">
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="deleteTravel()">Delete</button>
+        </div>
+    </div>
+    <!-- End Travel -->
+
+    <section class="mt-auto">
+        <!-- Footer -->
+        <footer class="bg-secondary text-white">
             <!-- Grid container -->
             <div class="container p-4">
-               <!--Grid row-->
-               <div class="row">
-                  <!--Grid column-->
-                  <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
-                     <h5 class="text-uppercase">Kelompok DMC</h5>
-                     <p>
-                        Adha Surya <br>
-                        Abdillah Hasan <br>
-                        Gerry William <br>
-                        Naufel Abiyyu <br>
-                        Rodo Idola
-                     </p>
-                  </div>
-                  <!--Grid column-->
-                  <!--Grid column-->
-                  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                     <h5 class="text-uppercase">Social Media</h5>
-                     <ul class="list-unstyled mb-0">
-                        <li class="my-2">
-                           <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
-                        </li>
-                        <li class="my-2">
-                           <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
-                        </li>
-                        <li class="my-2">
-                           <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
-                        </li>
-                        <li class="my-2">
-                           <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
-                        </li>
-                     </ul>
-                  </div>
-                  <!--Grid column-->
-               </div>
-               <!--Grid row-->
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Kelompok DMC</h5>
+                        <p>
+                            Adha Surya <br>
+                            Abdillah Hasan <br>
+                            Gerry William <br>
+                            Naufel Abiyyu <br>
+                            Rodo Idola
+                        </p>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Social Media</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
             </div>
             <!-- Grid container -->
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-               © 2022 Copyright: DMC
+                © 2022 Copyright: DMC
             </div>
             <!-- Copyright -->
-         </footer>
-         <!-- Footer -->
-      </section>
-      <script src="assets/js/jquery.min.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="./js/admin.js"></script>
-      <script type="text/javascript" src="./js/adminShow.js"></script>
-   </body>
+        </footer>
+        <!-- Footer -->
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/admin.js"></script>
+    <script type="text/javascript" src="./js/adminShow.js"></script>
+</body>
+
 </html>
