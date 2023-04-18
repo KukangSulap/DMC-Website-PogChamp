@@ -87,11 +87,12 @@ router.get('/getAllUser', (req, res) => {
 })
 
 router.post('/insertUser', encoder, (req, res) => {
-    const nama = req.body.nama
+    const namad = req.body.nama
+    const namab = req.body.nama_belakang
     const email = req.body.email
     const password = req.body.password
     const role = req.body.role
-    connection.query('INSERT INTO user (id, email, password, nama, role) VALUES ((SELECT MAX(id) FROM user u) + 1, ?,?,?,?)', [email, password, nama, role], (error, result, fields) => {
+    connection.query('INSERT INTO user (id, email, password, nama, nama_belakang, role) VALUES ((SELECT MAX(id) FROM user u) + 1, ?,?,?,?,?)', [email, password, namad, namab, role], (error, result, fields) => {
         if (error) {
             console.log(error)
         } else {
@@ -103,11 +104,12 @@ router.post('/insertUser', encoder, (req, res) => {
 
 router.post('/updateUser', encoder, (req, res) => {
     const id = req.body.id
-    const nama = req.body.nama
+    const namad = req.body.nama
+    const namab = req.body.nama_belakang
     const email = req.body.email
     const password = req.body.password
     const role = req.body.role
-    connection.query('UPDATE user SET email = ?, password = ?, nama = ?, role = ? WHERE id = ?', [email, password, nama, role, id], (error, result, fields) => {
+    connection.query('UPDATE user SET email = ?, password = ?, nama = ?, nama_belakang role = ? WHERE id = ?', [email, password, namad, namab, role, id], (error, result, fields) => {
         if (error) {
             console.log(error)
         } else {
@@ -158,9 +160,9 @@ router.get('/getOnePlanes', (req, res) => {
     });
 })
 
-router.get('/getPlane/:id_pesawat', (req, res) => {
-    const id_pesawat = req.params.id_pesawat
-    if (id_pesawat == '`'){
+router.get('/getPlane/:nama_pesawat', encoder, (req, res) => {
+    const nama_pesawat = req.params.nama_pesawat
+    if (nama_pesawat == '`'){
         connection.query('SELECT * FROM pesawat' , (error, rows) => {
             if (error) {
                 console.log(error);
@@ -171,10 +173,9 @@ router.get('/getPlane/:id_pesawat', (req, res) => {
             }
         })
     }else {
-        connection.query('SELECT * FROM `pesawat` WHERE nama_pesawat LIKE "%?%"', id_pesawat , (error, rows) => {
+        connection.query('SELECT * FROM pesawat WHERE nama_pesawat = ?', [nama_pesawat] , (error, rows) => {
             if (error) {
-                console.log(error);
-                res.status = 300;
+                console.log("get plane error");
             } else {
                 console.log("get plane Found");
                 res.status(200).send({data:rows})
@@ -476,15 +477,79 @@ router.post('/',  encoder, (req, res) => {
 
 router.post('/register',  encoder, (req, res) => {
     const nama = req.body.nama
+    const namab = req.body.nama_belakang
     const email = req.body.email;
     const password = req.body.password;
-    connection.query('INSERT INTO user (nama, email, password, role) values (?, ?, ?, "user")', [nama, email, password], (error, result, fields) => {
+    connection.query('INSERT INTO user (id, nama, nama_belakang, email, password, role) values ((SELECT MAX(id) FROM user u) + 1,?,?,?,?, "user")', [nama, namab, email, password], (error, result, fields) => {
         if (error) {
             console.log(error)
         } else {
             res.redirect('/')
         }
         res.end();
+    })
+})
+
+//Profile
+
+router.get('/getProfile1:email', encoder, (req, res) => {
+    const email = req.params.email
+    
+    connection.query('SELECT email, nama, nama_belakang FROM user where email = ?', [email], (error, rows) => {
+        if (error) {
+            console.log(error);
+            res.status = 300;
+        } else {
+            console.log("get User Found");
+            res.status(200).send({load:rows})
+        }
+    });
+})
+
+router.get('/getProfile2:email', encoder, (req, res) => {
+    const email = req.params.email
+
+    connection.query('SELECT * FROM profile where email = ?', [email], (error, rows) => {
+        if (error) {
+            console.log(error);
+            res.status = 300;
+        } else {
+            console.log("get User Found");
+            res.status(200).send({data:rows})
+        }
+    });
+})
+
+router.post('/updateProfile', encoder, (req, res) => {
+    const email = req.body.email    
+    const fN = req.body.fN
+    const lN = req.body.lN
+    const address = req.body.address
+    const no_hp = req.body.no_hp
+    const image = req.body.image
+
+    connection.query('SELECT * FROM profile WHERE email = ?', [email], (error, result, fields) =>{
+        if (!result.length) {
+            connection.query('INSERT INTO profile (email, first_name, last_name, address, no_hp, image) VALUES (?, ?, ?, ?, ?, "")', [email, fN, lN, address, no_hp], (error, result, fields) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log("Berhasil update profile")
+                    res.jsonp({success : true})
+                }
+                res.end()
+            })
+        } else {
+            connection.query('UPDATE profile SET first_name = ?, last_name = ?, address = ?, no_hp = ?, image = "" WHERE email = ?', [fN, lN, address, no_hp, email], (error, result, fields) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    console.log("Berhasil update profile")
+                    res.jsonp({success : true})
+                }
+                res.end()
+            })
+        }
     })
 })
 

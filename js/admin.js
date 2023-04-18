@@ -5,10 +5,11 @@ const baseURL = "http://localhost:3000"
 function get_required_user() {
     $.getJSON(baseURL + "/getAllUser", (data) => {
         clear()
-        display = "<table class='mt-4 table'><thead><tr><th>ID User</th><th>Nama User</th><th>Email</th><th>Password</th><th>Role</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID User</th><th>Nama Depan</th><th>Nama Belakang</th><th>Email</th><th>Password</th><th>Role</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id + "</td>" +
                 "<td>" + value.nama + "</td>" +
+                "<td>" + value.nama_belakang + "</td>" +
                 "<td>" + value.email + "</td>" +
                 "<td>" + value.password + "</td>" +
                 "<td>" + value.role + "</td></tr>"
@@ -28,10 +29,11 @@ function findUser() {
     var id = document.getElementById("findUser").value
 
     $.getJSON(baseURL + "/getUser/" + id, (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID User</th><th>Nama User</th><th>Email</th><th>Password</th><th>Role</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID User</th><th>Nama Depan</th><th>Nama Beelakang</th><th>Email</th><th>Password</th><th>Role</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id + "</td>" +
                 "<td>" + value.nama + "</td>" +
+                "<td>" + value.nama_belakang + "</td>" +
                 "<td>" + value.email + "</td>" +
                 "<td>" + value.password + "</td>" +
                 "<td>" + value.role + "</td></tr>"
@@ -48,7 +50,8 @@ function cariUser() {
 
     $.getJSON(baseURL + "/getUser/" + id, (data) => {
         data.data.forEach(function (value) {
-            document.getElementById("namaUser_update").value = value.nama
+            document.getElementById("namadUser_update").value = value.nama
+            document.getElementById("namabUser_update").value = value.nama_belakang
             document.getElementById("email_update").value = value.email
             document.getElementById("password_update").value = value.password
             document.getElementById("role_update").value = value.role
@@ -58,7 +61,8 @@ function cariUser() {
 
 function insertUser() {
     const data = {}
-    data.nama = document.getElementById("namaUser_insert").value
+    data.nama = document.getElementById("namadUser_insert").value
+    data.nama_belakang = document.getElementById("namabUser_insert").value
     data.email = document.getElementById("email_insert").value
     data.password = document.getElementById("password_insert").value
     data.role = document.getElementById("role_insert").value
@@ -76,7 +80,8 @@ function insertUser() {
 function updateUser() {
     const data = {}
     data.id = document.getElementById("id_update").value
-    data.nama = document.getElementById("namaUser_update").value
+    data.nama = document.getElementById("namadUser_update").value
+    data.nama_belakang = document.getElementById("namabUser_update").value
     data.email = document.getElementById("email_update").value
     data.password = document.getElementById("password_update").value
     data.role = document.getElementById("role_update").value

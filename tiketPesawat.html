@@ -118,6 +118,7 @@
                     + value.icon_pesawat + 
                     "' class='img-fluid' height='40px' width='40px'>" + 
                     "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
+                    "<h4 class='card-title'>"+ value.asal_pesawat+ " - " + value.tujuan_pesawat +"</h4>" +
                     "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
                     "<h5>" + "Rp. " + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
                 })
@@ -128,9 +129,9 @@
         }
 
         function findPlane(){
-          var id_pesawat = document.getElementById("findPlaneID").value
+          var nama_pesawat = document.getElementById("findPlaneID").value
 
-          $.getJSON(baseURL + "/getPlane/" + id_pesawat, (data) => {
+          $.getJSON(baseURL + "/getPlane/" + nama_pesawat, (data) => {
             display = "<div>"
                 data.data.forEach(function(value) {
                     display = display + 
