@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 27, 2023 at 03:41 PM
+-- Generation Time: May 02, 2023 at 12:06 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -27,23 +27,26 @@ SET time_zone = "+00:00";
 -- Table structure for table `kereta`
 --
 
-CREATE TABLE `kereta` (
+CREATE TABLE IF NOT EXISTS `kereta` (
   `id_kereta` varchar(11) NOT NULL,
   `nama_kereta` varchar(100) NOT NULL,
   `harga_tiket_kereta` int(100) NOT NULL,
   `berangkat_kereta` varchar(100) NOT NULL,
   `tiba_kereta` varchar(100) NOT NULL,
+  `jadwal_kereta` varchar(100) NOT NULL,
   `no_duduk` varchar(100) NOT NULL,
   `icon_kereta` varchar(100) DEFAULT NULL,
-  `bg_kereta` varchar(100) DEFAULT NULL
+  `bg_kereta` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_kereta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `kereta`
 --
 
-INSERT INTO `kereta` (`id_kereta`, `nama_kereta`, `harga_tiket_kereta`, `berangkat_kereta`, `tiba_kereta`, `no_duduk`, `icon_kereta`, `bg_kereta`) VALUES
-('K-E331', 'Express', 70000, 'Bandung; 20 April 2023; 09.30', 'Bekasi; 20 April 2023; 11.30', 'EKS 3; 12B', 'train.jpg', 'train1');
+INSERT INTO `kereta` (`id_kereta`, `nama_kereta`, `harga_tiket_kereta`, `berangkat_kereta`, `tiba_kereta`, `jadwal_kereta`, `no_duduk`, `icon_kereta`, `bg_kereta`) VALUES
+('K-E331', 'Express', 70000, 'Bandung', 'Bekasi', '18 April 2023; 09.00', 'EKS 3; 12B', 'kereta.png', 'kereta1'),
+('K-N123', 'Naro', 120000, 'Jakarta', 'Bandung', '2 Maret 2023; 12.30', 'EKO 5; 1C', 'kereta.png', 'kereta2');
 
 -- --------------------------------------------------------
 
@@ -51,7 +54,7 @@ INSERT INTO `kereta` (`id_kereta`, `nama_kereta`, `harga_tiket_kereta`, `berangk
 -- Table structure for table `pesawat`
 --
 
-CREATE TABLE `pesawat` (
+CREATE TABLE IF NOT EXISTS `pesawat` (
   `id_pesawat` varchar(11) NOT NULL,
   `nama_pesawat` varchar(100) NOT NULL,
   `harga_pesawat` int(30) NOT NULL,
@@ -61,7 +64,8 @@ CREATE TABLE `pesawat` (
   `asal_pesawat` varchar(100) NOT NULL,
   `tujuan_pesawat` varchar(100) NOT NULL,
   `icon_pesawat` varchar(100) DEFAULT NULL,
-  `bg_pesawat` varchar(100) DEFAULT NULL
+  `bg_pesawat` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_pesawat`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -80,13 +84,14 @@ INSERT INTO `pesawat` (`id_pesawat`, `nama_pesawat`, `harga_pesawat`, `no_duduk`
 -- Table structure for table `profile`
 --
 
-CREATE TABLE `profile` (
+CREATE TABLE IF NOT EXISTS `profile` (
   `email` varchar(100) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `address` varchar(100) NOT NULL,
   `no_hp` varchar(100) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -102,23 +107,25 @@ INSERT INTO `profile` (`email`, `first_name`, `last_name`, `address`, `no_hp`, `
 -- Table structure for table `travel`
 --
 
-CREATE TABLE `travel` (
+CREATE TABLE IF NOT EXISTS `travel` (
   `id_travel` varchar(11) NOT NULL,
   `nama_travel` varchar(20) NOT NULL,
   `harga_travel` int(30) NOT NULL,
   `no_duduk` varchar(20) NOT NULL,
   `waktu_berangkat` varchar(100) NOT NULL,
   `waktu_tiba` varchar(100) NOT NULL,
+  `jadwal_travel` varchar(100) NOT NULL,
   `icon_travel` varchar(20) DEFAULT NULL,
-  `bg_travel` varchar(20) DEFAULT NULL
+  `bg_travel` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_travel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `travel`
 --
 
-INSERT INTO `travel` (`id_travel`, `nama_travel`, `harga_travel`, `no_duduk`, `waktu_berangkat`, `waktu_tiba`, `icon_travel`, `bg_travel`) VALUES
-('T-K231', 'Kilat', 70000, '7', 'Jakarta; 10 April 2023; 09.00', 'Bandung; 10 April 2023; 11.00', 'travel.jpg', 'travel1');
+INSERT INTO `travel` (`id_travel`, `nama_travel`, `harga_travel`, `no_duduk`, `waktu_berangkat`, `waktu_tiba`, `jadwal_travel`, `icon_travel`, `bg_travel`) VALUES
+('T-DT231', 'DayTrans', 70000, '7', 'Jakarta', 'Bandung', '10 April 2023; 09.00', 'travel.png', 'travel');
 
 -- --------------------------------------------------------
 
@@ -126,68 +133,25 @@ INSERT INTO `travel` (`id_travel`, `nama_travel`, `harga_travel`, `no_duduk`, `w
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `nama_belakang` varchar(100) NOT NULL,
-  `role` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `role` varchar(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `nama`, `nama_belakang`, `role`) VALUES
-(1, 'admin', 'password', 'Gerry', 'William', 'admin'),
+(1, 'admin', '123', 'Gerry', 'William', 'admin'),
 (2, 'howler', '123', 'naufel', 'Abiu', 'admin'),
 (3, 'surya', '123', 'Ade', 'Surya', 'user'),
 (4, 'rodo', '123', 'Rodo', 'Idul', 'user');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `kereta`
---
-ALTER TABLE `kereta`
-  ADD PRIMARY KEY (`id_kereta`);
-
---
--- Indexes for table `pesawat`
---
-ALTER TABLE `pesawat`
-  ADD PRIMARY KEY (`id_pesawat`);
-
---
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`email`);
-
---
--- Indexes for table `travel`
---
-ALTER TABLE `travel`
-  ADD PRIMARY KEY (`id_travel`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

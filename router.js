@@ -42,6 +42,14 @@ router.get('/tiketPesawat', (req, res) => {
     res.sendFile('tiketPesawat.html', {root: './'})
 })
 
+router.get('/tiketKereta', (req, res) => {
+    res.sendFile('tiketKereta.html', {root: './'})
+})
+
+router.get('/tiketTravel', (req, res) => {
+    res.sendFile('tiketTravel.html', {root: './'})
+})
+
 router.get('/detailPemesanan', (req, res) => {
     res.sendFile('detailPemesanan.html', {root: './'})
 })

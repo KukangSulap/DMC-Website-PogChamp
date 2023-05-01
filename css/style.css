@@ -5,15 +5,14 @@
 	width: 50%;
 	height: 20%;
 	padding: 3%;
-	display: inline-block
-	padding-bottom: 4%;
+	display: inline-block padding-bottom: 4%;
 }
 
 .input {
 	width: 90%;
 	border: 0px;
 	font-size: 16px;
-  	padding: 12px;
+	padding: 12px;
 	border-bottom: solid #ddd 2px;
 	margin: 10px 10px 10px 10px;
 	box-sizing: border-box;
@@ -31,52 +30,53 @@
 	box-sizing: border-box;
 }
 
-h2{
+h2 {
 	text-align: left;
 	font-family: helvetica;
 }
 
 .header {
-  overflow: hidden;
-  background-color: #fff6f6;
-  padding: 20px 10px;
+	overflow: hidden;
+	background-color: #fff6f6;
+	padding: 20px 10px;
 }
 
 .header a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-  background-image: "css/bakudan.png";
+	float: left;
+	color: black;
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 18px;
+	line-height: 25px;
+	border-radius: 4px;
+	background-image: "css/bakudan.png";
 }
 
 .header a:hover {
-  background-color: #ddd;
-  color: black;
+	background-color: #ddd;
+	color: black;
 }
 
 
 .header-right {
-  text-align: right;
-  color: white;
-  padding: 5px;
+	text-align: right;
+	color: white;
+	padding: 5px;
 }
 
 @media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-    margin-left: 5px;
-    background-color: white;
-  }
-  .header-right {
-    float: none;
-  }
+	.header a {
+		float: none;
+		display: block;
+		text-align: left;
+		margin-left: 5px;
+		background-color: white;
+	}
+
+	.header-right {
+		float: none;
+	}
 }
 
 .card-img {
@@ -87,8 +87,9 @@ h2{
 	object-fit: cover;
 
 }
+
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 .card {
@@ -96,20 +97,64 @@ html {
 }
 
 #divmiomio {
-  background-color:white;
-  border: 1px solid #393c42;
-  border-radius:10px;
-  padding:20px;
+	background-color: white;
+	border: 1px solid #393c42;
+	border-radius: 10px;
+	padding: 20px;
 }
 
 #img {
-		background-image: url('../css/img1/plane1.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/plane1.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
 }
 
 #img2 {
-		background-image: url('../css/img1/plane2.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/plane2.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
 }
 
 #img3 {
-		background-image: url('../css/img1/plane3.jpg'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 90%;
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/plane3.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
+}
+
+#kereta1 {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/kereta/kereta.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
+}
+
+#kereta2 {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/kereta/kereta1.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
+}
+
+#kereta3 {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/kereta/kereta2.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
+}
+
+#travel {
+	background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.461)), url('../css/img1/travel/travel.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 90%;
 }

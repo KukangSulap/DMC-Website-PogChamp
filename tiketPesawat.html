@@ -1,158 +1,162 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>DMC WEB | Pesawat</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  <title>DMC WEB | Pesawat</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
+
 <body style="background: white;">
 
 
-    <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
-        <div class="container">
-            <div class="row">
-                <a class="navbar-brand" href="homeActivity">
-                    <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
-                </a>
+  <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
+    <div class="container">
+      <div class="row">
+        <a class="navbar-brand" href="homeActivity">
+          <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
+        </a>
 
-                <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
-            </div>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3">
-                    <a class="nav-link text-white" href="homeActivity">Back</a>
-                </li>
+        <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item mr-3">
+          <a class="nav-link text-white" href="homeActivity">Back</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container" style="padding:3%">
+
+    <h1>Pilihan Pesawat:</h1>
+
+    <div id="findPlane" class="container p-12">
+      <div class="col-md-10">
+        <label>Nama Pesawat</label>
+        <input type="text" class="form-control" id="findPlaneID">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary " onclick="findPlane()">Find</button>
+      </div>
+    </div>
+
+    <div id="bokunoyume"></div>
+
+  </div>
+
+
+
+  <section>
+    <!-- Footer -->
+    <footer class="bg-secondary text-white">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Kelompok DMC</h5>
+
+            <p>
+              Adha Surya <br>
+              Abdillah Hasan <br>
+              Gerry William <br>
+              Naufel Abiyyu <br>
+              Rodo Idola
+            </p>
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Social Media</h5>
+            <ul class="list-unstyled mb-0">
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
+              </li>
             </ul>
-        </div>
-    </div>
-
-    <div class="container" style="padding:3%">
-
-        <h1>Pilihan Pesawat:</h1>
-
-        <div id="findPlane" class="container p-12">
-            <div class="col-md-10" >
-                <label>Nama Pesawat</label>
-                <input type="text" class="form-control" id="findPlaneID">
-            </div>
-            <div class="col-md-2" >
-                <button type="submit" class="btn btn-primary " onclick="findPlane()">Find</button>
-            </div>
-        </div>
-
-        <div id="bokunoyume"></div>
-
-    </div>
-
-
-
-    <section>
-        <!-- Footer -->
-        <footer class="bg-secondary text-white">
-          <!-- Grid container -->
-          <div class="container p-4">
-            <!--Grid row-->
-            <div class="row">
-              <!--Grid column-->
-              <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Kelompok DMC</h5>
-      
-                <p>
-                  Adha Surya <br>
-                  Abdillah Hasan <br>
-                  Gerry William <br>
-                  Naufel Abiyyu <br>
-                  Rodo Idola
-                </p>
-              </div>
-              <!--Grid column-->
-      
-              <!--Grid column-->
-              <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Social Media</h5>
-                <ul class="list-unstyled mb-0">
-                  <li class="my-2">
-                    <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
-                  </li>
-                  <li class="my-2">
-                    <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
-                  </li>
-                  <li class="my-2">
-                    <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
-                  </li>
-                  <li class="my-2">
-                    <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
-                  </li>
-                </ul>
-              </div>
-              <!--Grid column-->
-            </div>
-            <!--Grid row-->
           </div>
-          <!-- Grid container -->
-      
-          <!-- Copyright -->
-          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2022 Copyright: DMC
-          </div>
-          <!-- Copyright -->
-        </footer>
-        <!-- Footer -->
-    </section>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright: DMC
+      </div>
+      <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+  </section>
 
-    <script type="text/javascript">
-        const baseURL = "http://localhost:3000"
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
 
-        function get_required_plane() {
-            $.getJSON(baseURL + "/getAllPlanes", (data) => {
-                console.log(data)
+  <script type="text/javascript">
+    const baseURL = "http://localhost:3000"
 
-                display = "<div>"
-                data.data.forEach(function(value) {
-                    display = display + 
-                    "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
-                    value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/" 
-                    + value.icon_pesawat + 
-                    "' class='img-fluid' height='40px' width='40px'>" + 
-                    "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
-                    "<h4 class='card-title'>"+ value.asal_pesawat+ " - " + value.tujuan_pesawat +"</h4>" +
-                    "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
-                    "<h5>" + "Rp. " + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
-                })
+    function get_required_plane() {
+      $.getJSON(baseURL + "/getAllPlanes", (data) => {
+        console.log(data)
 
-                display = display + "</div>"
-                document.getElementById("bokunoyume").innerHTML = display
-            })
-        }
+        display = "<div>"
+        data.data.forEach(function (value) {
+          display = display +
+            "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
+            value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/"
+            + value.icon_pesawat +
+            "' class='img-fluid' height='40px' width='40px'>" +
+            "<h3 class='card-title' style='margin-bottom: 30px;'>" + value.nama_pesawat + "</h3>" +
+            "<h4 class='card-title'>" + value.asal_pesawat + " - " + value.tujuan_pesawat + "</h4>" +
+            "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
+            "<h5>" + "Rp. " + value.harga_pesawat + "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+        })
 
-        function findPlane(){
-          var nama_pesawat = document.getElementById("findPlaneID").value
+        display = display + "</div>"
+        document.getElementById("bokunoyume").innerHTML = display
+      })
+    }
 
-          $.getJSON(baseURL + "/getPlane/" + nama_pesawat, (data) => {
-            display = "<div>"
-                data.data.forEach(function(value) {
-                    display = display + 
-                    "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
-                    value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/" 
-                    + value.icon_pesawat + 
-                    "' class='img-fluid' height='40px' width='40px'>" + 
-                    "<h3 class='card-title'>"+ value.nama_pesawat+ "</h3>" +
-                    "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
-                    "<h5>" + value.harga_pesawat +  "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
-                })
+    function findPlane() {
+      var nama_pesawat = document.getElementById("findPlaneID").value
 
-                display = display + "</div>"
-                document.getElementById("bokunoyume").innerHTML = display
-                document.getElementById("findPlaneID").value = ""
-          })
-          
-        }
-        window.onload = get_required_plane();
+      $.getJSON(baseURL + "/getPlane/" + nama_pesawat, (data) => {
+        display = "<div>"
+        data.data.forEach(function (value) {
+          display = display +
+            "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
+            value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/"
+            + value.icon_pesawat +
+            "' class='img-fluid' height='40px' width='40px'>" +
+            "<h3 class='card-title' style='margin-bottom: 30px;'>" + value.nama_pesawat + "</h3>" +
+            "<h4 class='card-title'>" + value.asal_pesawat + " - " + value.tujuan_pesawat + "</h4>" +
+            "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
+            "<h5>" + "Rp. " + value.harga_pesawat + "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+        })
 
-    </script>
+        display = display + "</div>"
+        document.getElementById("bokunoyume").innerHTML = display
+        document.getElementById("findPlaneID").value = ""
+      })
+
+    }
+    window.onload = get_required_plane();
+
+  </script>
 
 </body>
+
 </html>

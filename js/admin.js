@@ -219,13 +219,14 @@ function deletePlane() {
 function get_required_train() {
     clearTrain()
     $.getJSON(baseURL + "/getAllTrains", (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Waktu Berangkat</th><th>Waktu Tiba</th><th>No Tempat Duduk</th><th>Icon Kereta</th><th>Background Kereta</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Waktu Berangkat</th><th>Waktu Tiba</th><th>Jadwal</th><th>No Tempat Duduk</th><th>Icon Kereta</th><th>Background Kereta</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_kereta + "</td>" +
                 "<td>" + value.nama_kereta + "</td>" +
                 "<td>" + value.harga_tiket_kereta + "</td>" +
                 "<td>" + value.berangkat_kereta + "</td>" +
                 "<td>" + value.tiba_kereta + "</td>" +
+                "<td>" + value.jadwal_kereta+ "</td>" +
                 "<td>" + value.no_duduk + "</td>" +
                 "<td>" + value.icon_kereta + "</td>" +
                 "<td>" + value.bg_kereta + "</td></tr>"
