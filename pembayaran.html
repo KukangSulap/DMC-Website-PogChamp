@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Payment Methods</title>
+  <style>
+    .payment-icon {
+      max-width: 100px;
+      max-height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <div class="row">
+                <a class="navbar-brand" href="homeActivity">
+                    <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
+                </a>
+
+                <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-3">
+                    <a class="nav-link text-white" href="homeActivity">Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" style="padding:3%">
+        <h1>Pilih Metode Pembayaran</h1>
+        <ul class="list-group">
+          <li class="list-group-item clickable" data-notification="Credit Card payment selected">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center">
+                <img src="https://www.pngarts.com/files/3/Mastercard-Visa-Transparent-Image.png" alt="Credit Card" class="payment-icon">
+              </div>
+              <div class="col-md-10">
+                <h5>Credit Card</h5>
+                <p>Menerima kebanyakan kartu kredit</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item clickable" data-notification="PayPal payment selected">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center">
+                <img src="https://img.freepik.com/free-icon/paypal_318-674245.jpg" alt="PayPal" class="payment-icon">
+              </div>
+              <div class="col-md-10">
+                <h5>PayPal</h5>
+                <p>Bayar aman dengan PayPal</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item clickable" data-notification="OVO payment selected">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center">
+                <img src="https://ifoxsoft.com/wp-content/uploads/2022/09/OVO-Logo-PNG-IfoxSoftCom.webp" alt="OVO" class="payment-icon">
+              </div>
+              <div class="col-md-10">
+                <h5>OVO</h5>
+                <p>Simpel, Instan & Aman menggunakan OVO</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item clickable" data-notification="DANA payment selected">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center">
+                <img src="https://iconlogovector.com/uploads/images/2023/03/md-5375a80106119ac97bd185b6ee5b4b0155.jpg" alt="DANA" class="payment-icon">
+              </div>
+              <div class="col-md-10">
+                <h5>DANA</h5>
+                <p>Apa pun transaksinya selalu ada DANA</p>
+              </div>
+            </div>
+          </li>
+          <li class="list-group-item clickable" data-notification="GoPay payment selected">
+            <div class="row align-items-center">
+              <div class="col-md-2 text-center">
+                <img src="https://gopay.co.id/icon.png" alt="DANA" class="payment-icon">
+              </div>
+              <div class="col-md-10">
+                <h5>GoPay</h5>
+                <p>Pakai GoPay untuk kebebasan bertransaksi</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+  <div id="notification" class="alert alert-success" role="alert" style="display: none;">
+    Payment method selected!
+  </div>
+
+  <section>
+    <!-- Footer -->
+    <footer class="bg-secondary text-white">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Kelompok DMC</h5>
+  
+            <p>
+              Adha Surya <br>
+              Abdillah Hasan <br>
+              Gerry William <br>
+              Naufel Abiyyu <br>
+              Rodo Idola
+            </p>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Social Media</h5>
+            <ul class="list-unstyled mb-0">
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
+              </li>
+              <li class="my-2">
+                <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2022 Copyright: DMC
+      </div>
+      <!-- Copyright -->
+    </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.clickable').click(function() {
+        var notification = $(this).data('notification');
+        $('#notification').text(notification).fadeIn().delay(2000).fadeOut();
+      });
+    });
+  </script>
+</body>
+</html>
