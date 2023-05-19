@@ -24,7 +24,7 @@ function updateProfile() {
     let lastName = document.getElementById("lN").value
     let address = document.getElementById("address").value
     let no_hp = document.getElementById("no_hp").value
-    if (firstName == "-" || lastName == "-" || address == "-" || no_hp == "-") {
+    if (firstName == "-" || lastName == "-" || address == "-" || no_hp == "-" || firstName == "" || lastName == "" || address == "" || no_hp == "") {
         alert("Data masih ada yang kosong !!")
     } else if (isNaN(no_hp)) {
         alert("Nomor Handphone tidak boleh huruf")
@@ -45,6 +45,24 @@ function updateProfile() {
             success: function (data) {
                 if(data['success']){
                     alert("Data berhasil diUpdate")
+                    location.reload()
+                }
+            }
+        })
+
+        data.email = document.getElementById("email").value
+        data.nama = document.getElementById("fN").value
+        data.nama_belakang = document.getElementById("lN").value
+
+        $.ajax({
+            type: "POST",
+            url: baseURL + "/updateUserProfile",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                if(data['success']){
+                    alert("Data Profile berhasil diUpdate")
                     location.reload()
                 }
             }

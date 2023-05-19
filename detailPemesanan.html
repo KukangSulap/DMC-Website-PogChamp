@@ -17,11 +17,13 @@
 
                 <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
             </div>
+            <form action="tiketPesawat">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mr-3">
-                    <a class="nav-link text-white" href="tiketPesawat">Back</a>
+                    <input type="submit" value="back" class="nav-link text-white bg-transparent border-0" href="tiketPesawat"></a>
                 </li>
             </ul>
+            </form>
         </div>
     </div>
 
@@ -54,7 +56,7 @@
             </ul>
           </div>
           <div class="col-md-7 col-lg-8">
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" action="pembayaran">
               <div class="row g-3">
                 <div class="col-sm-12">
                   <label for="firstName" class="form-label my-1">Nama Lengkap</label>
@@ -139,11 +141,35 @@
       <!-- Footer -->
     </section>
 
-    <script type="text/javascript" src="js/details.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-    <script>
-      let nama = localStorage.getItem('email')
-      document.getElementById("name").value = nama
+    <script type="text/javascript">
+      const baseURL = "http://localhost:3000"
+      
+      let email = localStorage.getItem('email')
+      document.getElementById("name").value = email
+      let urutan = localStorage.getItem('urutan')
+
+      function get_plane(){ 
+        $.getJSON(baseURL + "/getOnePlanes/" + urutan, (data) => {
+          data.data.forEach(function (isi) {
+            document.getElementById("nama_travel").value = isi.nama_pesawat
+            document.getElementById("kota_asal").value = isi.asal_pesawat
+            document.getElementById("kota_tujuan").value = isi.tujuan_pesawat
+            document.getElementById("tgl").value = isi.jam_terbang
+            
+          })
+        })
+
+        $.getJSON(baseURL + "/getEmailUser/" + email, (data) => {
+          data.data.forEach(function (isi) {
+           document.getElementById("name").value = isi.nama + " " + isi.nama_belakang
+          })
+        })
+
+      }
+
+      window.onload = get_plane();
+
     </script>
 </body>
 </html>

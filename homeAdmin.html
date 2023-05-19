@@ -28,8 +28,8 @@
         <button class="btn btn-secondary" onclick="none()">Close</button>
         <button class="btn btn-secondary" onclick="get_required_user()">User</button>
         <button class="btn btn-secondary" onclick="get_required_plane()">Pesawat</button>
-        <button class="btn btn-secondary" onclick="get_required_train()">Kereta</button>
-        <button class="btn btn-secondary" onclick="get_required_travel()">Travel</button>
+        <!-- <button class="btn btn-secondary" onclick="get_required_train()">Kereta</button>
+        <button class="btn btn-secondary" onclick="get_required_travel()">Travel</button> -->
         <div id="list"></div>
     </div>
 
@@ -68,7 +68,10 @@
             </div>
             <div class="form-group" style="width: 500px">
                 <label>Role</label>
-                <input type="text" class="form-control" id="role_insert">
+                <select name="role" id="role_insert">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary" onclick="insertUser()">Insert</button>
         </div>
@@ -98,7 +101,10 @@
             </div>
             <div class="form-group" style="width: 500px">
                 <label>Role</label>
-                <input type="text" class="form-control" id="role_update">
+                <select name="role" id="role_update">
+                    <option value="user">User</option>
+                    <option value="admin">Admin</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-primary" onclick="updateUser()">Update</button>
         </div>
@@ -133,6 +139,10 @@
         <div id="insertPlane" style="display: none;">
             <br>
             <div class="form-group" style="width: 500px">
+                <label>ID Pesawat</label>
+                <input type="text" class="form-control" id="id_pesawat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
                 <label>Nama Pesawat</label>
                 <input type="text" class="form-control" id="nama_pesawat_insert">
             </div>
@@ -161,18 +171,25 @@
                 <input type="text" class="form-control" id="gate_insert">
             </div>
             <div class="form-group" style="width: 500px">
+                <label>Asal Pesawat</label>
+                <input type="text" class="form-control" id="asal_pesawat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Tujuan Pesawat</label>
+                <input type="text" class="form-control" id="tujuan_pesawat_insert">
+            </div>
+            <div class="form-group" style="width: 500px">
                 <label>Icon Pesawat</label>
                 <input type="text" class="form-control" id="icon_insert" readonly>
-                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
-
+                <input type="file" id="icon_upload" onchange="iconChange(event)">
             </div>
             <div class="form-group" style="width: 500px">
                 <label>Background Pesawat</label>
                 <input type="text" class="form-control" id="bg_pesawat_insert" readonly>
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
-
             </div>
-            <button type="submit" class="btn btn-primary" onclick="insertPlane()" style="margin-top: 3%;">Insert</button>
+            <button type="submit" class="btn btn-primary" onclick="insertPlane()"
+                style="margin-top: 3%;">Insert</button>
         </div>
 
         <div id="updatePlane" style="display: none">
@@ -210,16 +227,24 @@
                 <input type="text" class="form-control" id="gate_update">
             </div>
             <div class="form-group" style="width: 500px">
+                <label>Asal Pesawat</label>
+                <input type="text" class="form-control" id="asal_pesawat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
+                <label>Tujuan Pesawat</label>
+                <input type="text" class="form-control" id="tujuan_pesawat_update">
+            </div>
+            <div class="form-group" style="width: 500px">
                 <label>Icon Pesawat</label>
                 <input type="text" class="form-control" id="icon_update" readonly>
-                <button type="submit" class="btn btn-primary" onclick="">Upload</button>
             </div>
             <div class="form-group" style="width: 500px">
                 <label>Background Pesawat</label>
                 <input type="text" class="form-control" id="bg_pesawat_update" readonly>
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="updatePlane()" style="margin-top: 3%;">Update</button>
+            <button type="submit" class="btn btn-primary" onclick="updatePlane()"
+                style="margin-top: 3%;">Update</button>
         </div>
 
         <div id="deletePlane" style="display: none">
@@ -280,7 +305,8 @@
                 <input type="text" class="form-control" id="bg_kereta_insert" readonly>
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="insertTrain()" style="margin-top: 3%;">Insert</button>
+            <button type="submit" class="btn btn-primary" onclick="insertTrain()"
+                style="margin-top: 3%;">Insert</button>
         </div>
 
         <div id="updateTrain" style="display: none">
@@ -319,7 +345,8 @@
                 <input type="text" class="form-control" id="bg_kereta_update" readonly>
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="updateTrain()" style="margin-top: 3%;">Update</button>
+            <button type="submit" class="btn btn-primary" onclick="updateTrain()"
+                style="margin-top: 3%;">Update</button>
         </div>
 
         <div id="deleteTrain" style="display: none">
@@ -383,7 +410,8 @@
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
 
             </div>
-            <button type="submit" class="btn btn-primary" onclick="insertTravel()" style="margin-top: 3%;">Insert</button>
+            <button type="submit" class="btn btn-primary" onclick="insertTravel()"
+                style="margin-top: 3%;">Insert</button>
         </div>
 
         <div id="updateTravel" style="display: none">
@@ -424,7 +452,8 @@
                 <button type="submit" class="btn btn-primary" onclick="">Upload</button>
 
             </div>
-            <button type="submit" class="btn btn-primary" onclick="updateTravel()" style="margin-top: 3%;">Update</button>
+            <button type="submit" class="btn btn-primary" onclick="updateTravel()"
+                style="margin-top: 3%;">Update</button>
         </div>
 
         <div id="deleteTravel" style="display: none">
@@ -492,6 +521,13 @@
     <script src="assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/admin.js"></script>
     <script type="text/javascript" src="./js/adminShow.js"></script>
+    <script type="text/javascript">
+        function iconChange(event) {
+            let file = document.getElementById("icon_upload")
+            document.getElementById("icon_insert").value = file
+        }
+
+    </script>
 </body>
 
 </html>

@@ -113,6 +113,19 @@ function deleteUser() {
 
 // Pesawat
 
+function clearPlane() {
+    document.getElementById("id_pesawat_insert").value = ""
+    document.getElementById("nama_pesawat_insert").value = ""
+    document.getElementById("harga_insert").value = ""
+    document.getElementById("duduk_insert").value = ""
+    document.getElementById("gate_insert").value = ""
+    document.getElementById("jam_terbang_insert").value = ""
+    document.getElementById("asal_pesawat_insert").value = ""
+    document.getElementById("tujuan_pesawat_insert").value = ""
+    document.getElementById("icon_insert").value = ""
+    document.getElementById("bg_pesawat_insert").value = ""
+}
+
 function get_required_plane() {
     clearPlane()
     $.getJSON(baseURL + "/getAllPlanes", (data) => {
@@ -142,15 +155,21 @@ function get_required_plane() {
 }
 
 function findPlane() {
-    var id_pesawat = document.getElementById("findPlane").value
+    var id_pesawat = document.getElementById("findPlaneID").value
 
     $.getJSON(baseURL + "/getPlane/" + id_pesawat, (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Pesawat</th><th>Nama Pesawat</th><th>Harga</th><th>Jam Terbang</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Pesawat</th><th>Nama Pesawat</th><th>Harga</th><th>Boarding Time</th><th>Asal</th><th>Tiba</th><th>No Tempat Duduk</th><th>Gate</th><th>Icon Pesawat</th><th>Background Pesawat</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_pesawat + "</td>" +
                 "<td>" + value.nama_pesawat + "</td>" +
                 "<td>" + value.harga_pesawat + "</td>" +
-                "<td>" + value.jam_terbang + "</td></tr>"
+                "<td>" + value.jam_terbang + "</td>" +
+                "<td>" + value.asal_pesawat + "</td>" +
+                "<td>" + value.tujuan_pesawat + "</td>" +
+                "<td>" + value.no_duduk + "</td>" +
+                "<td>" + value.gate + "</td>" +
+                "<td>" + value.icon_pesawat + "</td>" +
+                "<td>" + value.bg_pesawat + "</td></tr>"
         })
 
         display = display + "</tbody></table></div>"
@@ -161,13 +180,16 @@ function findPlane() {
 
 function insertPlane() {
     const data = {}
+    data.q = document.getElementById("id_pesawat_insert").value
     data.w = document.getElementById("nama_pesawat_insert").value
     data.e = document.getElementById("harga_insert").value
-    data.r = document.getElementById("jam_terbang_insert").value
-    data.t = document.getElementById("asal_insert").value
-    data.y = document.getElementById("tujuan_insert").value
-    data.u = document.getElementById("icon_insert").value
-    data.i = document.getElementById("bg_pesawat_insert").value
+    data.r = document.getElementById("duduk_insert").value
+    data.t = document.getElementById("gate_insert").value
+    data.y = document.getElementById("jam_terbang_insert").value
+    data.u = document.getElementById("asal_pesawat_insert").value
+    data.i = document.getElementById("tujuan_pesawat_insert").value
+    data.s = document.getElementById("icon_insert").value
+    data.s = document.getElementById("bg_pesawat_insert").value
 
     $.ajax({
         type: "POST",
@@ -177,6 +199,7 @@ function insertPlane() {
         dataType: "json"
     })
     get_required_plane()
+    clearPlane()
 }
 
 function updatePlane() {
@@ -184,11 +207,13 @@ function updatePlane() {
     data.q = document.getElementById("id_pesawat_update").value
     data.w = document.getElementById("nama_pesawat_update").value
     data.e = document.getElementById("harga_update").value
-    data.r = document.getElementById("jam_terbang_update").value
-    data.t = document.getElementById("asal_update").value
-    data.y = document.getElementById("tujuan_update").value
-    data.u = document.getElementById("icon_update").value
-    data.i = document.getElementById("bg_pesawat_update").value
+    data.r = document.getElementById("duduk_update").value
+    data.t = document.getElementById("gate_update").value
+    data.y = document.getElementById("jam_terbang_update").value
+    data.u = document.getElementById("asal_pesawat_update").value
+    data.i = document.getElementById("tujuan_pesawat_update").value
+    data.s = document.getElementById("icon_update").value
+    data.s = document.getElementById("bg_pesawat_update").value
 
     $.ajax({
         type: "POST",
@@ -198,6 +223,7 @@ function updatePlane() {
         dataType: "json"
     })
     get_required_plane()
+    clearPlane()
 }
 
 
@@ -212,6 +238,7 @@ function deletePlane() {
         dataType: "json"
     })
     get_required_plane()
+    clearPlane()
 }
 
 // Kereta
