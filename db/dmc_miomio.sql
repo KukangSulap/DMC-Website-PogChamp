@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2023 at 12:06 AM
+-- Generation Time: May 19, 2023 at 08:20 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -55,6 +55,7 @@ INSERT INTO `kereta` (`id_kereta`, `nama_kereta`, `harga_tiket_kereta`, `berangk
 --
 
 CREATE TABLE IF NOT EXISTS `pesawat` (
+  `urutan` int(11) NOT NULL,
   `id_pesawat` varchar(11) NOT NULL,
   `nama_pesawat` varchar(100) NOT NULL,
   `harga_pesawat` int(30) NOT NULL,
@@ -72,11 +73,11 @@ CREATE TABLE IF NOT EXISTS `pesawat` (
 -- Dumping data for table `pesawat`
 --
 
-INSERT INTO `pesawat` (`id_pesawat`, `nama_pesawat`, `harga_pesawat`, `no_duduk`, `gate`, `jam_terbang`, `asal_pesawat`, `tujuan_pesawat`, `icon_pesawat`, `bg_pesawat`) VALUES
-('P-C334', 'Citilink', 500000, '10B', 2, '21.00; 13 Maret 2023', 'Jakarta', 'Bandung', 'garuda.png', 'img2'),
-('P-G301', 'Garuda Indonesia', 700000, '4A', 10, '10.00; 20 April 2023', 'Bekasi', 'Jakarta', 'lion.png', 'img2'),
-('P-L001', 'Lion Air', 600000, '20C', 5, '06.00; 10 Febuari 2023', 'Bandung', 'Surabaya', 'garuda.png', 'img'),
-('P-M020', 'Mandala Airlines', 900000, '12A', 3, '18.00; 12 Febuari 2023', 'Yogyakarta', 'Papua', 'cangcimen.png', 'img3');
+INSERT INTO `pesawat` (`urutan`, `id_pesawat`, `nama_pesawat`, `harga_pesawat`, `no_duduk`, `gate`, `jam_terbang`, `asal_pesawat`, `tujuan_pesawat`, `icon_pesawat`, `bg_pesawat`) VALUES
+(0, 'P-C231', 'Citilink', 500000, '10B', 2, '21.00; 13 Maret 2023', 'Jakarta', 'Bandung', 'garuda.png', 'img2'),
+(1, 'P-G301', 'Garuda Indonesia', 700000, '4A', 10, '10.00; 20 April 2023', 'Bekasi', 'Jakarta', 'lion.png', 'img2'),
+(2, 'P-L001', 'Lion Air', 600000, '20C', 5, '06.00; 10 Febuari 2023', 'Bandung', 'Surabaya', 'garuda.png', 'img'),
+(3, 'P-M020', 'Mandala Airlines', 900000, '12A', 3, '18.00; 12 Febuari 2023', 'Yogyakarta', 'Papua', 'cangcimen.png', 'img3');
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`email`, `first_name`, `last_name`, `address`, `no_hp`, `image`) VALUES
-('surya', 'Ade', 'Surya', 'asdasd', '213123', '');
+('surya', 'Adha', 'Surya', 'Bandung', '123124', '');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `email`, `password`, `nama`, `nama_belakang`, `role`) VALUES
 (1, 'admin', '123', 'Gerry', 'William', 'admin'),
 (2, 'howler', '123', 'naufel', 'Abiu', 'admin'),
-(3, 'surya', '123', 'Ade', 'Surya', 'user'),
+(3, 'surya', '123', 'Adha', 'Surya', 'user'),
 (4, 'rodo', '123', 'Rodo', 'Idul', 'user');
 COMMIT;
 
