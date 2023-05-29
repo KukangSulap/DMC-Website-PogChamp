@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Payment Methods</title>
+    <style>
+        .payment-icon {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar sticky-top navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <div class="row">
+                <a class="navbar-brand" href="homeActivity">
+                    <img class="img-fluid" src="css/bakudan.png" width="40" height="40" alt="">
+                </a>
+
+                <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-3">
+                    <a class="nav-link text-white" href="pembayaran">Back</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container" style="padding: 3%;">
+        <h1>Detail Pembayaran</h1>
+        <div class="col-md-7 col-lg-8" style="margin-top: 5%;">
+            <div class="col-sm-12">
+                <label for="firstName" class="form-label my-1">Nomor Rekening </label>
+                <input type="text" class="form-control" id="noRek" value="021031022" readonly><a
+                    onclick="copyText()" style="color: blue; cursor: pointer;">Salin</a>
+            </div>
+            <div class="col-sm-12">
+                <label for="nama_travel" class="form-label my-1">Harga</label>
+                <input type="text" class="form-control" id="harga" readonly><a onclick="copyTextHarga()" style="color: blue; cursor: pointer;">Salin</a>
+            </div>
+            <div class="col-sm-12">
+                <button class="w-70 btn btn-primary btn-lg my-4" type="submit" id="btn" onclick="complete()">Sudah Bayar</button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <section>
+        <!-- Footer -->
+        <footer class="bg-secondary text-white">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-9 col-md-12 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Kelompok DMC</h5>
+
+                        <p>
+                            Adha Surya <br>
+                            Abdillah Hasan <br>
+                            Gerry William <br>
+                            Naufel Abiyyu <br>
+                            Rodo Idola
+                        </p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Social Media</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a> Facebook
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-twitter"></i></a> Twitter
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-whatsapp"></i></a> WhatsApp
+                            </li>
+                            <li class="my-2">
+                                <a href="#!" class="text-white"><i class="bi bi-instagram"></i></a> Instagram
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2022 Copyright: DMC
+            </div>
+            <!-- Copyright -->
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+
+            function copyText() {
+                var copyText = document.getElementById("noRek");
+
+                copyText.select();
+                copyText.setSelectionRange(0, 9999);
+
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            function copyTextHarga() {
+                var copyText = document.getElementById("harga");
+
+                copyText.select();
+                copyText.setSelectionRange(0, 9999);
+
+                navigator.clipboard.writeText(copyText.value);
+            }
+
+            var total = localStorage.getItem("total")
+
+            document.getElementById("harga").value = total
+
+
+            function complete(){
+                alert("Transaksi Berhasil")
+
+                $(location).prop('href', 'homeActivity')
+
+            }
+
+        </script>
+</body>
+
+</html>

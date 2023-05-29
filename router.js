@@ -57,6 +57,10 @@ router.get('/detailPemesanan', (req, res) => {
 router.get('/pembayaran', (req, res) => {
     res.sendFile('pembayaran.html', { root: './' })
 })
+
+router.get('/detailPembayaran', (req, res) => {
+    res.sendFile('detailPembayaran.html', { root: './' })
+})
 // End
 
 // User

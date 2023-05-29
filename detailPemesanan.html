@@ -83,7 +83,7 @@
               </div>
             </div>
             <hr class="my-4">
-            <button class="w-100 btn btn-primary btn-lg my-4" type="submit" id="btn">Lanjut ke Pembayaran</button>
+            <button class="w-100 btn btn-primary btn-lg my-4" type="submit" id="btn" onclick="saveTotal()">Lanjut ke Pembayaran</button>
           </form>
         </div>
       </div>
@@ -148,6 +148,8 @@
     integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script type="text/javascript">
     const baseURL = "http://localhost:3000"
+
+    localStorage.removeItem("total")
 
     let email = localStorage.getItem('email')
     document.getElementById("name").value = email
@@ -234,6 +236,12 @@
       } else if (localStorage.getItem("nTravel") == "travel") {
         document.getElementById("back").action = "tiketTravel";
       }
+    }
+
+    function saveTotal(){
+      var total = $('#totalHasil').html();
+
+      localStorage.setItem("total", total)
     }
 
   </script>
