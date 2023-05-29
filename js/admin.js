@@ -243,17 +243,44 @@ function deletePlane() {
 
 // Kereta
 
+function clearInsertKereta() {
+    document.getElementById("id_kereta_insert").value = ""
+    document.getElementById("nama_kereta_insert").value = ""
+    document.getElementById("harga_kereta_insert").value = ""
+    document.getElementById("berangkat_kereta_insert").value = ""
+    document.getElementById("tiba_kereta_insert").value = ""
+    document.getElementById("jadwal_kereta_insert").value = ""
+    document.getElementById("duduk_kereta_insert").value = ""
+    document.getElementById("icon_kereta_insert").value = ""
+    document.getElementById("bg_kereta_insert").value = ""
+}
+
+function clearUpdateKereta() {
+    document.getElementById("id_kereta_update").value = ""
+    document.getElementById("nama_kereta_update").value = ""
+    document.getElementById("harga_kereta_update").value = ""
+    document.getElementById("berangkat_kereta_update").value = ""
+    document.getElementById("tiba_kereta_update").value = ""
+    document.getElementById("jadwal_kereta_update").value = ""
+    document.getElementById("duduk_kereta_update").value = ""
+    document.getElementById("icon_kereta_update").value = ""
+    document.getElementById("bg_kereta_update").value = ""
+    document.getElementById("bg_kereta_update").value = ""
+}
+
 function get_required_train() {
+    clearInsertKereta()
+    clearUpdateKereta()
     clearTrain()
     $.getJSON(baseURL + "/getAllTrains", (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Waktu Berangkat</th><th>Waktu Tiba</th><th>Jadwal</th><th>No Tempat Duduk</th><th>Icon Kereta</th><th>Background Kereta</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Berangkat</th><th>Tiba</th><th>Jadwal</th><th>No Tempat Duduk</th><th>Icon Kereta</th><th>Background Kereta</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_kereta + "</td>" +
                 "<td>" + value.nama_kereta + "</td>" +
                 "<td>" + value.harga_tiket_kereta + "</td>" +
                 "<td>" + value.berangkat_kereta + "</td>" +
                 "<td>" + value.tiba_kereta + "</td>" +
-                "<td>" + value.jadwal_kereta+ "</td>" +
+                "<td>" + value.jadwal_kereta + "</td>" +
                 "<td>" + value.no_duduk + "</td>" +
                 "<td>" + value.icon_kereta + "</td>" +
                 "<td>" + value.bg_kereta + "</td></tr>"
@@ -269,15 +296,20 @@ function get_required_train() {
 }
 
 function findTrain() {
-    var id_kereta = document.getElementById("findTrain").value
+    var id_kereta = document.getElementById("findTrainID").value
 
     $.getJSON(baseURL + "/getTrain/" + id_kereta, (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Jam Terbang</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Kereta</th><th>Nama Kereta</th><th>Harga</th><th>Berangkat</th><th>Tiba</th><th>Jadwal</th><th>No Tempat Duduk</th><th>Icon Kereta</th><th>Background Kereta</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_kereta + "</td>" +
                 "<td>" + value.nama_kereta + "</td>" +
-                "<td>" + value.harga_kereta + "</td>" +
-                "<td>" + value.jam_berangkat + "</td></tr>"
+                "<td>" + value.harga_tiket_kereta + "</td>" +
+                "<td>" + value.berangkat_kereta + "</td>" +
+                "<td>" + value.tiba_kereta + "</td>" +
+                "<td>" + value.jadwal_kereta + "</td>" +
+                "<td>" + value.no_duduk + "</td>" +
+                "<td>" + value.icon_kereta + "</td>" +
+                "<td>" + value.bg_kereta + "</td></tr>"
         })
 
         display = display + "</tbody></table></div>"
@@ -288,13 +320,15 @@ function findTrain() {
 
 function insertTrain() {
     const data = {}
-    data.w = document.getElementById("nama_kereta_insert").value
-    data.e = document.getElementById("harga_insert").value
-    data.r = document.getElementById("jam_berangkat_insert").value
-    data.t = document.getElementById("asal_insert").value
-    data.y = document.getElementById("tujuan_insert").value
-    data.u = document.getElementById("icon_insert").value
-    data.i = document.getElementById("bg_kereta_insert").value
+    data.id = document.getElementById("id_kereta_insert").value
+    data.nama = document.getElementById("nama_kereta_insert").value
+    data.harga = document.getElementById("harga_kereta_insert").value
+    data.berangkat = document.getElementById("berangkat_kereta_insert").value
+    data.tiba = document.getElementById("tiba_kereta_insert").value
+    data.jadwal = document.getElementById("jadwal_kereta_insert").value
+    data.duduk = document.getElementById("duduk_kereta_insert").value
+    data.icon = document.getElementById("icon_kereta_insert").value
+    data.bg = document.getElementById("bg_kereta_insert").value
 
     $.ajax({
         type: "POST",
@@ -308,14 +342,15 @@ function insertTrain() {
 
 function updateTrain() {
     const data = {}
-    data.q = document.getElementById("id_kereta_update").value
-    data.w = document.getElementById("nama_kereta_update").value
-    data.e = document.getElementById("harga_update").value
-    data.r = document.getElementById("jam_berangkat_update").value
-    data.t = document.getElementById("asal_update").value
-    data.y = document.getElementById("tujuan_update").value
-    data.u = document.getElementById("icon_update").value
-    data.i = document.getElementById("bg_kereta_update").value
+    data.id = document.getElementById("id_kereta_update").value
+    data.nama = document.getElementById("nama_kereta_update").value
+    data.harga = document.getElementById("harga_kereta_update").value
+    data.berangkat = document.getElementById("berangkat_kereta_update").value
+    data.tiba = document.getElementById("tiba_kereta_update").value
+    data.jadwal = document.getElementById("jadwal_kereta_update").value
+    data.duduk = document.getElementById("duduk_kereta_update").value
+    data.icon = document.getElementById("icon_kereta_update").value
+    data.bg = document.getElementById("bg_kereta_update").value
 
     $.ajax({
         type: "POST",
@@ -343,10 +378,37 @@ function deleteTrain() {
 
 // Travel
 
+function clearInsertTravel() {
+    document.getElementById("id_travel_insert").value = ""
+    document.getElementById("nama_travel_insert").value = ""
+    document.getElementById("harga_travel_insert").value = ""
+    document.getElementById("berangkat_travel_insert").value = ""
+    document.getElementById("tiba_travel_insert").value = ""
+    document.getElementById("jadwal_travel_insert").value = ""
+    document.getElementById("duduk_travel_insert").value = ""
+    document.getElementById("icon_travel_insert").value = ""
+    document.getElementById("bg_travel_insert").value = ""
+}
+
+function clearUpdateTravel() {
+    document.getElementById("id_travel_update").value = ""
+    document.getElementById("nama_travel_update").value = ""
+    document.getElementById("harga_travel_update").value = ""
+    document.getElementById("berangkat_travel_update").value = ""
+    document.getElementById("tiba_travel_update").value = ""
+    document.getElementById("jadwal_travel_update").value = ""
+    document.getElementById("duduk_travel_update").value = ""
+    document.getElementById("icon_travel_update").value = ""
+    document.getElementById("bg_travel_update").value = ""
+    document.getElementById("bg_travel_update").value = ""
+}
+
 function get_required_travel() {
+    clearInsertTravel()
+    clearUpdateTravel()
     clearTravel()
     $.getJSON(baseURL + "/getAllTravels", (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Travel</th><th>Nama Travel</th><th>Harga</th><th>No Tempat Duduk</th><th>Waktu Berangkat</th><th>Waktu Tiba</th><th>Icon Travel</th><th>Background Travel</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Travel</th><th>Nama Travel</th><th>Harga</th><th>No Tempat Duduk</th><th>Asal</th><th>Tiba</th><th>Jadwal</th><th>Icon Travel</th><th>Background Travel</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_travel + "</td>" +
                 "<td>" + value.nama_travel + "</td>" +
@@ -354,6 +416,7 @@ function get_required_travel() {
                 "<td>" + value.no_duduk + "</td>" +
                 "<td>" + value.waktu_berangkat + "</td>" +
                 "<td>" + value.waktu_tiba + "</td>" +
+                "<td>" + value.jadwal_travel + "</td>" +
                 "<td>" + value.icon_travel + "</td>" +
                 "<td>" + value.bg_travel + "</td></tr>"
         })
@@ -371,12 +434,17 @@ function findTravel() {
     var id_travel = document.getElementById("findTravel").value
 
     $.getJSON(baseURL + "/getTravel/" + id_travel, (data) => {
-        display = "<table class='mt-4 table'><thead><tr><th>ID Travel</th><th>Nama Travel</th><th>Harga</th><th>Jam Terbang</th></tr></thead><tbody>"
+        display = "<table class='mt-4 table'><thead><tr><th>ID Travel</th><th>Nama Travel</th><th>Harga</th><th>No Tempat Duduk</th><th>Asal</th><th>Tiba</th><th>Jadwal</th><th>Icon Travel</th><th>Background Travel</th></tr></thead><tbody>"
         data.data.forEach(function (value) {
             display = display + "<tr><td>" + value.id_travel + "</td>" +
                 "<td>" + value.nama_travel + "</td>" +
                 "<td>" + value.harga_travel + "</td>" +
-                "<td>" + value.jam_berangkat + "</td></tr>"
+                "<td>" + value.no_duduk + "</td>" +
+                "<td>" + value.waktu_berangkat + "</td>" +
+                "<td>" + value.waktu_tiba + "</td>" +
+                "<td>" + value.jadwal_travel + "</td>" +
+                "<td>" + value.icon_travel + "</td>" +
+                "<td>" + value.bg_travel + "</td></tr>"
         })
 
         display = display + "</tbody></table></div>"
@@ -386,14 +454,17 @@ function findTravel() {
 }
 
 function insertTravel() {
+    console.log("HEllo")
     const data = {}
-    data.w = document.getElementById("nama_travel_insert").value
-    data.e = document.getElementById("harga_insert").value
-    data.r = document.getElementById("jam_berangkat_insert").value
-    data.t = document.getElementById("asal_insert").value
-    data.y = document.getElementById("tujuan_insert").value
-    data.u = document.getElementById("icon_insert").value
-    data.i = document.getElementById("bg_travel_insert").value
+    data.id = document.getElementById("id_travel_insert").value
+    data.nama = document.getElementById("nama_travel_insert").value
+    data.harga = document.getElementById("harga_travel_insert").value
+    data.duduk = document.getElementById("duduk_travel_insert").value
+    data.berangkat = document.getElementById("berangkat_travel_insert").value
+    data.tiba = document.getElementById("tiba_travel_insert").value
+    data.jadwal = document.getElementById("jadwal_travel_insert").value
+    data.icon = document.getElementById("icon_travel_insert").value
+    data.bg = document.getElementById("bg_travel_insert").value
 
     $.ajax({
         type: "POST",
@@ -407,14 +478,15 @@ function insertTravel() {
 
 function updateTravel() {
     const data = {}
-    data.q = document.getElementById("id_travel_update").value
-    data.w = document.getElementById("nama_travel_update").value
-    data.e = document.getElementById("harga_update").value
-    data.r = document.getElementById("jam_berangkat_update").value
-    data.t = document.getElementById("asal_update").value
-    data.y = document.getElementById("tujuan_update").value
-    data.u = document.getElementById("icon_update").value
-    data.i = document.getElementById("bg_travel_update").value
+    data.id = document.getElementById("id_travel_update").value
+    data.nama = document.getElementById("nama_travel_update").value
+    data.harga = document.getElementById("harga_travel_update").value
+    data.duduk = document.getElementById("duduk_travel_update").value
+    data.berangkat = document.getElementById("berangkat_travel_update").value
+    data.tiba = document.getElementById("tiba_travel_update").value
+    data.jadwal = document.getElementById("jadwal_travel_update").value
+    data.icon = document.getElementById("icon_travel_update").value
+    data.bg = document.getElementById("bg_travel_update").value
 
     $.ajax({
         type: "POST",
@@ -428,7 +500,8 @@ function updateTravel() {
 
 function deleteTravel() {
     const data = {}
-    data.id_kereta = document.getElementById("id_travel_delete").value
+    data.id = document.getElementById("id_travel_delete").value
+
     $.ajax({
         type: "POST",
         url: baseURL + "/deleteTravel",

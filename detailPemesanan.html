@@ -19,11 +19,10 @@
 
         <h1 class="text-white" style="margin: auto;">Harihari Pergi</h1>
       </div>
-      <form action="tiketPesawat">
+      <form id="back" onsubmit="back()">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item mr-3">
-            <input type="submit" value="back" class="nav-link text-white bg-transparent border-0"
-              href="tiketPesawat"></a>
+            <input type="submit" value="Back" class="nav-link text-white bg-transparent border-0">
           </li>
         </ul>
       </form>
@@ -155,6 +154,8 @@
     let urutan = localStorage.getItem('urutan')
     let total = 0
 
+
+    //Load Data Pesawat
     function get_plane() {
       $.getJSON(baseURL + "/getOnePlanes/" + urutan, (data) => {
         data.data.forEach(function (isi) {
@@ -168,16 +169,72 @@
           $('#totalHasil').html(total);
         })
       })
+    }
 
-      $.getJSON(baseURL + "/getEmailUser/" + email, (data) => {
+    //
+
+
+    //Load Data Kereta
+
+    function get_train() {
+      $.getJSON(baseURL + "/getOneTrains/" + urutan, (data) => {
+        data.data.forEach(function (isi) {
+          document.getElementById("nama_travel").value = isi.nama_kereta
+          document.getElementById("kota_asal").value = isi.berangkat_kereta
+          document.getElementById("kota_tujuan").value = isi.tiba_kereta
+          document.getElementById("tgl").value = isi.jadwal_kereta
+          $('#harga_awal').html(isi.harga_tiket_kereta);
+          total = isi.harga_tiket_kereta
+          total = total + (total * 0.1)
+          $('#totalHasil').html(total);
+        })
+      })
+    }
+
+    //
+    
+    //Load Data Travel
+
+    function get_travel() {
+      $.getJSON(baseURL + "/getOneTravels/" + urutan, (data) => {
+        data.data.forEach(function (isi) {
+          document.getElementById("nama_travel").value = isi.nama_travel
+          document.getElementById("kota_asal").value = isi.waktu_berangkat
+          document.getElementById("kota_tujuan").value = isi.waktu_tiba
+          document.getElementById("tgl").value = isi.jadwal_travel
+          $('#harga_awal').html(isi.harga_travel);
+          total = isi.harga_travel
+          total = total + (total * 0.1)
+          $('#totalHasil').html(total);
+        })
+      })
+    }
+
+    //
+
+    $.getJSON(baseURL + "/getEmailUser/" + email, (data) => {
         data.data.forEach(function (isi) {
           document.getElementById("name").value = isi.nama + " " + isi.nama_belakang
         })
       })
 
-    }
+    if (localStorage.getItem("nTravel") == "pesawat") {
+      window.onload = get_plane();
+    } else if (localStorage.getItem("nTravel") == "kereta") {
+      window.onload = get_train();
+    } else if (localStorage.getItem("nTravel") == "travel") {
+      window.onload = get_travel();
+    } 
 
-    window.onload = get_plane();
+    function back() {
+      if (localStorage.getItem("nTravel") == "pesawat") {
+        document.getElementById("back").action = "tiketPesawat";
+      } else if (localStorage.getItem("nTravel") == "kereta") {
+        document.getElementById("back").action = "tiketKereta";
+      } else if (localStorage.getItem("nTravel") == "travel") {
+        document.getElementById("back").action = "tiketTravel";
+      }
+    }
 
   </script>
 </body>

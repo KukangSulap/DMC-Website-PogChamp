@@ -30,9 +30,9 @@
 
   <div class="container" style="padding:3%">
 
-    <!-- <h1>Pilihan Pesawat:</h1>
+    <h1>Pilihan Pesawat:</h1>
 
-    <div id="findPlane" class="container p-12">
+    <!-- <div id="findPlane" class="container p-12">
       <div class="col-md-10">
         <label>Nama Pesawat</label>
         <input type="text" class="form-control" id="findPlaneID">
@@ -137,18 +137,20 @@
     function findPlane() {
       var nama_pesawat = document.getElementById("findPlaneID").value
 
-      $.getJSON(baseURL + "/getPlane/" + nama_pesawat, (data) => {
+      $.getJSON(baseURL + "/getAllPlanes", (data) => {
+        console.log(data)
+
         display = "<div>"
-        data.data.forEach(function (value) {
+        data.data.forEach(function (value, index) {
           display = display +
-            "<div class='col-md-12 mt-3'><div class='card text-white' id='" +
+            "<form action='detailPemesanan' onsubmit='savePesawat(" + index + ")'><div class='col-md-12 mt-3'><div class='card text-white' id='" +
             value.bg_pesawat + "'><div class='card-body'><img src='css/assets/pesawat/"
             + value.icon_pesawat +
-            "' class='img-fluid' height='40px' width='40px'>" +
+            "'class='img-fluid' height='40px' width='40px'>" +
             "<h3 class='card-title' style='margin-bottom: 30px;'>" + value.nama_pesawat + "</h3>" +
             "<h4 class='card-title'>" + value.asal_pesawat + " - " + value.tujuan_pesawat + "</h4>" +
             "<h5 class='card-title'>" + value.jam_terbang + "</h5><div class='text-right'>" +
-            "<h5>" + "Rp. " + value.harga_pesawat + "</h5><a href='detailPemesanan' class='btn btn-primary' style='width: 10rem;'>Pesan</a></div></div></div></div>"
+            "<h5>" + "Rp. " + value.harga_pesawat + "</h5><input type='submit' value='Pesan' class='btn btn-primary' style='width: 10rem;'></a></div></div></div></div></form>"
         })
 
         display = display + "</div>"

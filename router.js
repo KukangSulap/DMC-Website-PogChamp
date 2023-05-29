@@ -205,7 +205,7 @@ router.get('/getPlane/:id_pesawat', encoder, (req, res) => {
     const id_pesawat = req.params.id_pesawat
     if (id_pesawat == '`') {
         connection.query('SELECT * FROM pesawat', (error, rows) => {
-            if (error) {    
+            if (error) {
                 console.log("Tidak ada Pesawat");
                 res.status = 300;
             } else {
@@ -214,7 +214,7 @@ router.get('/getPlane/:id_pesawat', encoder, (req, res) => {
             }
         })
     } else if (id_pesawat != '`') {
-        connection.query('SELECT * FROM pesawat WHERE id_pesawat = ?', [id_pesawat] ,(error, rows) => {
+        connection.query('SELECT * FROM pesawat WHERE id_pesawat = ?', [id_pesawat], (error, rows) => {
             if (error) {
                 console.log("Tidak ada Pesawat");
                 res.status = 300;
@@ -237,10 +237,10 @@ router.post('/insertPlane', encoder, (req, res) => {
     const asal_pesawat = req.body.u
     const tujuan_pesawat = req.body.i
     const icon_pesawat = req.body.a
-    const bg_pesawat = req.body.s   
-    
+    const bg_pesawat = req.body.s
+
     connection.query('INSERT INTO pesawat (urutan, id_pesawat, nama_pesawat, harga_pesawat, no_duduk, gate, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat) VALUES ((SELECT MAX(urutan) FROM pesawat p) + 1, ?,?,?,?,?,?,?,?,?,?)',
-        [id_pesawat, nama_pesawat, harga_pesawat,no_duduk, gate, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat],
+        [id_pesawat, nama_pesawat, harga_pesawat, no_duduk, gate, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
@@ -261,10 +261,10 @@ router.post('/updatePlane', encoder, (req, res) => {
     const asal_pesawat = req.body.u
     const tujuan_pesawat = req.body.i
     const icon_pesawat = req.body.a
-    const bg_pesawat = req.body.s  
+    const bg_pesawat = req.body.s
 
     connection.query('UPDATE pesawat SET nama_pesawat = ?, harga_pesawat = ?, no_duduk = ?, gate = ?, jam_terbang = ?, asal_pesawat = ?, tujuan_pesawat = ?, icon_pesawat = ?, bg_pesawat = ? WHERE id_pesawat = ?',
-        [nama_pesawat, harga_pesawat,no_duduk, gate, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat, id_pesawat],
+        [nama_pesawat, harga_pesawat, no_duduk, gate, jam_terbang, asal_pesawat, tujuan_pesawat, icon_pesawat, bg_pesawat, id_pesawat],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
@@ -304,8 +304,9 @@ router.get('/getAllTrains', (req, res) => {
     })
 })
 
-router.get('/getOneTrains', (req, res) => {
-    connection.query('SELECT * FROM kereta where id_kereta = 1', (error, rows) => {
+router.get('/getOneTrains/:urutan', (req, res) => {
+    const uR = req.params.urutan
+    connection.query('SELECT * FROM kereta where urutan = ?', [uR], (error, rows) => {
         if (error) {
             console.log(error);
             res.status = 300;
@@ -329,7 +330,7 @@ router.get('/getTrain/:id_kereta', (req, res) => {
             }
         })
     } else {
-        connection.query('SELECT * FROM `kereta` WHERE nama_kereta LIKE "%?%"', id_kereta, (error, rows) => {
+        connection.query('SELECT * FROM kereta WHERE id_kereta = ?', [id_kereta], (error, rows) => {
             if (error) {
                 console.log(error);
                 res.status = 300;
@@ -337,20 +338,23 @@ router.get('/getTrain/:id_kereta', (req, res) => {
                 console.log("get Train Found");
                 res.status(200).send({ data: rows })
             }
-        });
+        })
     }
 })
 
 
 router.post('/insertTrain', encoder, (req, res) => {
-    const nama_kereta = req.body.w
-    const harga_kereta = req.body.e
-    const jam_terbang = req.body.r
-    const asal_kereta = req.body.t
-    const icon_kereta = req.body.u
-    const bg_kereta = req.body.i
-    connection.query('INSERT INTO kereta (id_kereta, nama_kereta, harga_kereta, jam_terbang, asal_kereta, tujuan_kereta, icon_kereta, bg_kereta) VALUES ((SELECT MAX(id_kereta) FROM kereta p) + 1, ?,?,?,?,?,?,?)',
-        [nama_kereta, harga_kereta, jam_terbang, asal_kereta, tujuan_kereta, icon_kereta, bg_kereta],
+    const id_kereta = req.body.id
+    const nama_kereta = req.body.nama
+    const harga_tiket_kereta = req.body.harga
+    const berangkat_kereta = req.body.berangkat
+    const tiba_kereta = req.body.tiba
+    const jadwal_kereta = req.body.jadwal
+    const no_duduk = req.body.duduk
+    const icon_kereta = req.body.icon
+    const bg_kereta = req.body.bg
+    connection.query('INSERT INTO kereta (urutan, id_kereta, nama_kereta, harga_tiket_kereta, berangkat_kereta, tiba_kereta, jadwal_kereta, no_duduk, icon_kereta, bg_kereta) VALUES ((SELECT MAX(urutan) FROM kereta p) + 1, ?,?,?,?,?,?,?,?,?)',
+        [id_kereta, nama_kereta, harga_tiket_kereta, berangkat_kereta, tiba_kereta, jadwal_kereta, no_duduk, icon_kereta, bg_kereta],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
@@ -362,21 +366,22 @@ router.post('/insertTrain', encoder, (req, res) => {
 })
 
 router.post('/updateTrain', encoder, (req, res) => {
-    const id_kereta = req.body.q
-    const nama_kereta = req.body.w
-    const harga_tiket_kereta = req.body.e
-    const waktu_perjalanan = req.body.r
-    const asal_kereta = req.body.t
-    const tujuan_kereta = req.body.y
-    const icon_kereta = req.body.u
-    const bg_kereta = req.body.i
-    connection.query('UPDATE kereta SET nama_kereta = ?, harga_kereta = ?, jam_terbang = ?, asal_kereta = ?, tujuan_kereta = ?, icon_kereta = ?, bg_kereta = ? WHERE id_kereta = ?',
-        [nama_kereta, harga_tiket_kereta, waktu_perjalanan, asal_kereta, tujuan_kereta, icon_kereta, bg_kereta, id_kereta],
+    const id_kereta = req.body.id
+    const nama_kereta = req.body.nama
+    const harga_tiket_kereta = req.body.harga
+    const berangkat_kereta = req.body.berangkat
+    const tiba_kereta = req.body.tiba
+    const jadwal_kereta = req.body.jadwal
+    const no_duduk = req.body.duduk
+    const icon_kereta = req.body.icon
+    const bg_kereta = req.body.bg
+    connection.query('UPDATE kereta SET nama_kereta = ?, harga_tiket_kereta = ?, berangkat_kereta = ?, tiba_kereta = ?, jadwal_kereta = ?, no_duduk = ?, icon_kereta = ?, bg_kereta = ? WHERE id_kereta = ?',
+        [nama_kereta, harga_tiket_kereta, berangkat_kereta, tiba_kereta, jadwal_kereta, no_duduk, icon_kereta, bg_kereta, id_kereta],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
             } else {
-                console.log("Train updated")
+                console.log("Train inserted")
             }
             res.end()
         })
@@ -411,8 +416,9 @@ router.get('/getAllTravels', (req, res) => {
     })
 })
 
-router.get('/getOneTravels', (req, res) => {
-    connection.query('SELECT * FROM travel where id_travel = 1', (error, rows) => {
+router.get('/getOneTravels/:urutan', (req, res) => {
+    const uR = req.params.urutan
+    connection.query('SELECT * FROM travel where urutan = ?', [uR], (error, rows) => {
         if (error) {
             console.log(error);
             res.status = 300;
@@ -436,7 +442,7 @@ router.get('/getTravel/:id_travel', (req, res) => {
             }
         })
     } else {
-        connection.query('SELECT * FROM `travel` WHERE nama_travel LIKE "%?%"', id_travel, (error, rows) => {
+        connection.query('SELECT * FROM travel WHERE id_travel = ?', [id_travel] , (error, rows) => {
             if (error) {
                 console.log(error);
                 res.status = 300;
@@ -450,14 +456,17 @@ router.get('/getTravel/:id_travel', (req, res) => {
 
 
 router.post('/insertTravel', encoder, (req, res) => {
-    const nama_travel = req.body.w
-    const harga_travel = req.body.e
-    const jam_terbang = req.body.r
-    const asal_travel = req.body.t
-    const icon_travel = req.body.u
-    const bg_travel = req.body.i
-    connection.query('INSERT INTO travel (id_travel, nama_travel, harga_travel, jam_terbang, asal_travel, tujuan_travel, icon_travel, bg_travel) VALUES ((SELECT MAX(id_travel) FROM travel p) + 1, ?,?,?,?,?,?,?)',
-        [nama_travel, harga_travel, jam_terbang, asal_travel, tujuan_travel, icon_travel, bg_travel],
+    const id_travel = req.body.id
+    const nama_travel = req.body.nama
+    const harga_travel = req.body.harga
+    const waktu_berangkat = req.body.berangkat
+    const waktu_tiba = req.body.tiba
+    const jadwal_travel = req.body.jadwal
+    const no_duduk = req.body.duduk
+    const icon_travel = req.body.icon
+    const bg_travel = req.body.bg
+    connection.query('INSERT INTO travel (urutan, id_travel, nama_travel, harga_travel, no_duduk, waktu_berangkat, waktu_tiba, jadwal_travel, icon_travel, bg_travel) VALUES ((SELECT MAX(urutan) FROM travel p) + 1, ?,?,?,?,?,?,?,?,?)',
+        [id_travel, nama_travel, harga_travel, no_duduk, waktu_berangkat, waktu_tiba, jadwal_travel, icon_travel, bg_travel],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
@@ -469,16 +478,17 @@ router.post('/insertTravel', encoder, (req, res) => {
 })
 
 router.post('/updateTravel', encoder, (req, res) => {
-    const id_travel = req.body.q
-    const nama_travel = req.body.w
-    const harga_tiket_travel = req.body.e
-    const waktu_perjalanan = req.body.r
-    const asal_travel = req.body.t
-    const tujuan_travel = req.body.y
-    const icon_travel = req.body.u
-    const bg_travel = req.body.i
-    connection.query('UPDATE travel SET nama_travel = ?, harga_travel = ?, jam_terbang = ?, asal_travel = ?, tujuan_travel = ?, icon_travel = ?, bg_travel = ? WHERE id_travel = ?',
-        [nama_travel, harga_tiket_travel, waktu_perjalanan, asal_travel, tujuan_travel, icon_travel, bg_travel, id_travel],
+    const id_travel = req.body.id
+    const nama_travel = req.body.nama
+    const harga_travel = req.body.harga
+    const waktu_berangkat = req.body.berangkat
+    const waktu_tiba = req.body.tiba
+    const jadwal_travel = req.body.jadwal
+    const no_duduk = req.body.duduk
+    const icon_travel = req.body.icon
+    const bg_travel = req.body.bg
+    connection.query('UPDATE travel SET nama_travel = ?, harga_travel = ?, no_duduk = ?, waktu_berangkat = ?, waktu_tiba = ?, jadwal_travel = ?, icon_travel = ?, bg_travel = ? WHERE id_travel = ?',
+        [nama_travel, harga_travel, no_duduk, waktu_berangkat, waktu_tiba, jadwal_travel, icon_travel, bg_travel, id_travel],
         (error, result, fields) => {
             if (error) {
                 console.log(error)
@@ -490,19 +500,19 @@ router.post('/updateTravel', encoder, (req, res) => {
 })
 
 router.post('/deleteTravel', encoder, (req, res) => {
-    const id_travel = req.body.id_travel
+    const id_travel = req.body.id
 
     connection.query('DELETE FROM travel WHERE id_travel = ?', [id_travel], (error, result, fields) => {
         if (error) {
-            console.log(error)
+            console.log(result)
         } else {
-            console.log("Travel deleted")
+            console.log(result)
         }
         res.end()
     })
 })
 
-//End Train
+//End Travel
 
 //Login
 
